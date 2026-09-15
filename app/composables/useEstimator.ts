@@ -19,7 +19,8 @@ export interface EstimatorState {
 export interface OptionEntry<T extends string = string> {
   value: T
   label: string
-  description: string
+  /** Optional helper line; budget ranges render the label on its own. */
+  description?: string
   icon: string
 }
 
@@ -74,10 +75,10 @@ export const estimatorProjectTypes: OptionEntry<ProjectType>[] = [
 ]
 
 export const estimatorBudgets: OptionEntry<BudgetRange>[] = [
-  { value: '1k-5k', label: '$1k — $5k', description: 'Telegram bot, kichik ilova yoki audit', icon: 'i-lucide-circle-dollar-sign' },
-  { value: '5k-10k', label: '$5k — $10k', description: 'Aniq maqsadli MVP', icon: 'i-lucide-circle-dollar-sign' },
-  { value: '10k-20k', label: '$10k — $20k', description: 'To‘liq mahsulot relizi', icon: 'i-lucide-circle-dollar-sign' },
-  { value: '20k-30k', label: '$20k — $30k', description: 'Bir necha jamoali korporativ loyiha', icon: 'i-lucide-circle-dollar-sign' }
+  { value: '1k-5k', label: '$1k — $5k', icon: 'i-lucide-circle-dollar-sign' },
+  { value: '5k-10k', label: '$5k — $10k', icon: 'i-lucide-circle-dollar-sign' },
+  { value: '10k-20k', label: '$10k — $20k', icon: 'i-lucide-circle-dollar-sign' },
+  { value: '20k-30k', label: '$20k — $30k', icon: 'i-lucide-circle-dollar-sign' }
 ]
 
 export const estimatorTimelines: OptionEntry<TimelineOption>[] = [

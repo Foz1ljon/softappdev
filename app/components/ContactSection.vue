@@ -269,13 +269,8 @@ onMounted(() => {
                     class="h-4 w-4 shrink-0"
                     :class="state.budget === item.value ? 'text-indigo-400' : 'text-muted'"
                   />
-                  <div>
-                    <div class="text-sm font-semibold text-highlighted">
-                      {{ item.label }}
-                    </div>
-                    <div class="text-xs text-muted">
-                      {{ item.description }}
-                    </div>
+                  <div class="text-sm font-semibold text-highlighted">
+                    {{ item.label }}
                   </div>
                 </button>
               </div>
