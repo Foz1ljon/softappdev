@@ -1,0 +1,168 @@
+<script setup lang="ts">
+import { AGENCY_EMAIL, AGENCY_LEGAL_NAME, AGENCY_NAME } from '~/composables/useSeo'
+
+const { t, lt } = useLocale()
+const currentYear = new Date().getFullYear()
+
+const serviceLinks = [
+  { label: { en: 'CRM & ERP systems', uz: 'CRM va ERP tizimlari' }, href: '#services' },
+  { label: { en: 'Mobile development', uz: 'Mobil ishlab chiqish' }, href: '#services' },
+  { label: { en: 'Backend & APIs', uz: 'Backend va API' }, href: '#services' },
+  { label: { en: 'UI/UX systems', uz: 'UI/UX tizimlari' }, href: '#services' }
+]
+
+const companyLinks = [
+  { label: { en: 'Portfolio', uz: 'Portfolio' }, href: '#portfolio' },
+  { label: { en: 'Technology stack', uz: 'Texnologiyalar' }, href: '#stack' },
+  { label: { en: 'How we work', uz: 'Qanday ishlaymiz' }, href: '#process' },
+  { label: { en: 'About us', uz: 'Kompaniya' }, href: '#about' }
+]
+
+const socialLinks = [
+  { icon: 'i-simple-icons-github', url: 'https://github.com/softappdev', label: 'GitHub' },
+  { icon: 'i-simple-icons-telegram', url: 'https://t.me/softappdev', label: 'Telegram' },
+  { icon: 'i-simple-icons-linkedin', url: 'https://www.linkedin.com/company/softappdev', label: 'LinkedIn' }
+]
+
+async function go(href: string) {
+  const element = document.querySelector(href)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    return
+  }
+  await navigateTo(`/${href}`)
+}
+</script>
+
+<template>
+  <footer class="relative border-t border-default pt-14 pb-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <NuxtLink
+            to="/"
+            class="flex items-center gap-2"
+          >
+            <AppLogo class="h-8 w-8" />
+            <span class="text-lg font-bold tracking-tight text-highlighted">{{ AGENCY_NAME }}</span>
+          </NuxtLink>
+          <p class="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+            {{ lt({
+              en: 'Product engineering studio building CRM/ERP systems, e-commerce platforms, logistics software and cross-platform mobile apps.',
+              uz: 'CRM/ERP tizimlari, e-tijorat platformalari, logistika dasturlari va ko‘p platformali mobil ilovalar quradigan mahsulot muhandisligi studiyasi.'
+            }) }}
+          </p>
+          <div class="mt-5 flex items-center gap-3">
+            <a
+              v-for="social in socialLinks"
+              :key="social.label"
+              :href="social.url"
+              target="_blank"
+              rel="noopener"
+              :aria-label="social.label"
+              class="flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-accentuated hover:text-highlighted"
+            >
+              <AppIcon
+                :name="social.icon"
+                class="h-4 w-4"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-highlighted">
+            {{ t('footer.services') }}
+          </h3>
+          <ul class="mt-4 space-y-2.5">
+            <li
+              v-for="link in serviceLinks"
+              :key="link.label.en"
+            >
+              <button
+                class="text-left text-sm text-muted transition-colors hover:text-highlighted"
+                @click="go(link.href)"
+              >
+                {{ lt(link.label) }}
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-highlighted">
+            {{ t('footer.company') }}
+          </h3>
+          <ul class="mt-4 space-y-2.5">
+            <li
+              v-for="link in companyLinks"
+              :key="link.label.en"
+            >
+              <button
+                class="text-left text-sm text-muted transition-colors hover:text-highlighted"
+                @click="go(link.href)"
+              >
+                {{ lt(link.label) }}
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-highlighted">
+            {{ t('footer.case') }}
+          </h3>
+          <ul class="mt-4 space-y-2.5">
+            <li>
+              <NuxtLink
+                to="/work/connectmobile"
+                class="text-sm text-muted transition-colors hover:text-highlighted"
+              >
+                ConnectMobile
+              </NuxtLink>
+            </li>
+            <li>
+              <a
+                :href="`mailto:${AGENCY_EMAIL}`"
+                class="text-sm text-muted transition-colors hover:text-highlighted"
+              >
+                {{ AGENCY_EMAIL }}
+              </a>
+            </li>
+            <li>
+              <button
+                class="text-left text-sm text-muted transition-colors hover:text-highlighted"
+                @click="go('#contact')"
+              >
+                {{ t('nav.cta') }}
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-col items-start justify-between gap-4 border-t border-default pt-6 sm:flex-row sm:items-center">
+        <p class="text-xs text-muted">
+          &copy; {{ currentYear }} {{ AGENCY_LEGAL_NAME }}. {{ t('footer.rights') }}
+        </p>
+        <div class="flex flex-wrap items-center gap-5">
+          <NuxtLink
+            to="/privacy"
+            class="text-xs text-muted transition-colors hover:text-highlighted"
+          >
+            {{ t('footer.privacy') }}
+          </NuxtLink>
+          <NuxtLink
+            to="/terms"
+            class="text-xs text-muted transition-colors hover:text-highlighted"
+          >
+            {{ t('footer.terms') }}
+          </NuxtLink>
+          <span class="text-xs text-muted">
+            {{ lt({ en: 'Built with Vue, three.js and a lot of tests.', uz: 'Vue, three.js va ko‘plab testlar bilan qurilgan.' }) }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
