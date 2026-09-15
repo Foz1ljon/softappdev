@@ -3,7 +3,7 @@ import { AGENCY_NAME, AGENCY_EMAIL } from '~/composables/useSeo'
 
 useSeo({
   title: `${AGENCY_NAME} — Privacy Policy`,
-  description: 'Privacy policy for SoftappDev IT agency.',
+  description: 'Privacy policy for SoftAppDev IT agency.',
   path: '/privacy',
   noindex: true
 })

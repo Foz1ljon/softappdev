@@ -1,6 +1,6 @@
-# SoftappDev — agency website
+# SoftAppDev — agency website
 
-Marketing and case-study site for **SoftappDev**, a product engineering studio in Tashkent
+Marketing and case-study site for **SoftAppDev**, a product engineering studio in Tashkent
 building CRM/ERP systems, e-commerce and logistics platforms, cross-platform mobile apps
 and the cloud infrastructure behind them.
 

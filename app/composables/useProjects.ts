@@ -64,7 +64,7 @@ const projects: Project[] = [
       { label: 'Read the full case study', url: '/work/connectmobile', icon: 'i-lucide-book-open', internal: true }
     ],
     featured: true,
-    year: '2024 — Present',
+    year: 'June 2024 — Present',
     architectureNotes: [
       'Capacitor shell around Vue 3 delivers one codebase for the Google Play Store and the App Store with native plugin access.',
       'NestJS microservices isolate catalog, checkout and delivery domains behind a Redis-cached gateway.',

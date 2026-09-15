@@ -65,7 +65,7 @@ onMounted(() => {
           v-motion
           :hovered="{ scale: 1.04, transition: { type: 'spring', stiffness: 260, damping: 18 } }"
           :tapped="{ scale: 0.97 }"
-          class="inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors"
+          class="inline-flex min-h-10 items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors sm:min-h-0"
           :class="activeTab === filter.value
             ? 'border-indigo-500/30 bg-indigo-500/15 text-indigo-300'
             : 'border-transparent bg-accentuated text-muted hover:text-highlighted'"
@@ -85,12 +85,12 @@ onMounted(() => {
         @click="flipCard"
       >
         <div
-          class="relative min-h-[540px] transition-transform duration-700 ease-out"
+          class="relative grid transition-transform duration-700 ease-out"
           :style="{ transformStyle: 'preserve-3d', transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }"
         >
           <!-- FRONT -->
           <div
-            class="glow-hover glass absolute inset-0 rounded-3xl p-6 sm:p-10"
+            class="glow-hover glass col-start-1 row-start-1 rounded-3xl p-6 sm:p-10"
             :style="{ backfaceVisibility: 'hidden' }"
           >
             <div class="grid gap-8 lg:grid-cols-5 lg:gap-12">
@@ -188,7 +188,7 @@ onMounted(() => {
 
           <!-- BACK -->
           <div
-            class="glow-hover glass absolute inset-0 rounded-3xl p-6 sm:p-10"
+            class="glow-hover glass col-start-1 row-start-1 rounded-3xl p-6 sm:p-10"
             :style="{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }"
           >
             <div class="flex h-full flex-col justify-center">

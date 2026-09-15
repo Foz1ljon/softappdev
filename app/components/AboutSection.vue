@@ -86,7 +86,7 @@ onMounted(() => {
 <template>
   <section
     id="about"
-    class="relative py-24 sm:py-32"
+    class="relative overflow-x-clip py-24 sm:py-32"
   >
     <div class="orb absolute -left-20 top-1/4 h-[420px] w-[420px] bg-indigo-600/10" />
 
@@ -117,8 +117,8 @@ onMounted(() => {
           >
             <p>
               {{ lt({
-                en: 'SoftappDev is a product engineering studio based in Tashkent, working with businesses that run on software rather than on slide decks. Since 2021 we have designed and operated systems where an order, a payment or a delivery has to be correct every single time.',
-                uz: 'SoftappDev — Toshkentda joylashgan mahsulot muhandisligi studiyasi. Biz taqdimotlar emas, dasturiy ta’minot asosida ishlaydigan bizneslar bilan ishlaymiz. 2021-yildan buyon buyurtma, to‘lov yoki yetkazish har safar to‘g‘ri bo‘lishi shart bo‘lgan tizimlarni loyihalashtiramiz va boshqaramiz.'
+                en: 'SoftAppDev is a product engineering studio based in Tashkent, working with businesses that run on software rather than on slide decks. Since 2021 we have designed and operated systems where an order, a payment or a delivery has to be correct every single time.',
+                uz: 'SoftAppDev — Toshkentda joylashgan mahsulot muhandisligi studiyasi. Biz taqdimotlar emas, dasturiy ta’minot asosida ishlaydigan bizneslar bilan ishlaymiz. 2021-yildan buyon buyurtma, to‘lov yoki yetkazish har safar to‘g‘ri bo‘lishi shart bo‘lgan tizimlarni loyihalashtiramiz va boshqaramiz.'
               }) }}
             </p>
             <p>

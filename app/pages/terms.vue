@@ -3,7 +3,7 @@ import { AGENCY_NAME, AGENCY_EMAIL } from '~/composables/useSeo'
 
 useSeo({
   title: `${AGENCY_NAME} — Terms of Service`,
-  description: 'Terms of service for SoftappDev IT agency.',
+  description: 'Terms of service for SoftAppDev IT agency.',
   path: '/terms',
   noindex: true
 })
@@ -21,7 +21,7 @@ useSeo({
             1. Services
           </h2>
           <p class="mt-2">
-            SoftappDev provides custom software development services including CRM/ERP systems, mobile applications, web platforms, and cloud solutions.
+            SoftAppDev provides custom software development services including CRM/ERP systems, mobile applications, web platforms, and cloud solutions.
           </p>
         </section>
         <section>

@@ -60,7 +60,7 @@ async function go(href: string) {
               target="_blank"
               rel="noopener"
               :aria-label="social.label"
-              class="flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-accentuated hover:text-highlighted"
+              class="flex h-11 w-11 items-center justify-center rounded-full text-muted transition-colors hover:bg-accentuated hover:text-highlighted sm:h-9 sm:w-9"
             >
               <AppIcon
                 :name="social.icon"
@@ -74,13 +74,13 @@ async function go(href: string) {
           <h3 class="text-sm font-bold uppercase tracking-wider text-highlighted">
             {{ t('footer.services') }}
           </h3>
-          <ul class="mt-4 space-y-2.5">
+          <ul class="mt-3 space-y-1 sm:mt-4 sm:space-y-2.5">
             <li
               v-for="link in serviceLinks"
               :key="link.label.en"
             >
               <button
-                class="text-left text-sm text-muted transition-colors hover:text-highlighted"
+                class="inline-flex min-h-9 items-center text-left text-sm text-muted transition-colors hover:text-highlighted sm:min-h-0"
                 @click="go(link.href)"
               >
                 {{ lt(link.label) }}
@@ -93,13 +93,13 @@ async function go(href: string) {
           <h3 class="text-sm font-bold uppercase tracking-wider text-highlighted">
             {{ t('footer.company') }}
           </h3>
-          <ul class="mt-4 space-y-2.5">
+          <ul class="mt-3 space-y-1 sm:mt-4 sm:space-y-2.5">
             <li
               v-for="link in companyLinks"
               :key="link.label.en"
             >
               <button
-                class="text-left text-sm text-muted transition-colors hover:text-highlighted"
+                class="inline-flex min-h-9 items-center text-left text-sm text-muted transition-colors hover:text-highlighted sm:min-h-0"
                 @click="go(link.href)"
               >
                 {{ lt(link.label) }}
@@ -112,11 +112,11 @@ async function go(href: string) {
           <h3 class="text-sm font-bold uppercase tracking-wider text-highlighted">
             {{ t('footer.case') }}
           </h3>
-          <ul class="mt-4 space-y-2.5">
+          <ul class="mt-3 space-y-1 sm:mt-4 sm:space-y-2.5">
             <li>
               <NuxtLink
                 to="/work/connectmobile"
-                class="text-sm text-muted transition-colors hover:text-highlighted"
+                class="inline-flex min-h-9 items-center text-sm text-muted transition-colors hover:text-highlighted sm:min-h-0"
               >
                 ConnectMobile
               </NuxtLink>
@@ -124,14 +124,14 @@ async function go(href: string) {
             <li>
               <a
                 :href="`mailto:${AGENCY_EMAIL}`"
-                class="text-sm text-muted transition-colors hover:text-highlighted"
+                class="inline-flex min-h-9 items-center text-sm text-muted transition-colors hover:text-highlighted sm:min-h-0"
               >
                 {{ AGENCY_EMAIL }}
               </a>
             </li>
             <li>
               <button
-                class="text-left text-sm text-muted transition-colors hover:text-highlighted"
+                class="inline-flex min-h-9 items-center text-left text-sm text-muted transition-colors hover:text-highlighted sm:min-h-0"
                 @click="go('#contact')"
               >
                 {{ t('nav.cta') }}

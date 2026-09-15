@@ -68,7 +68,7 @@ const tilts = steps.map(() => useCardTilt(10))
 <template>
   <section
     id="process"
-    class="relative py-24 sm:py-32"
+    class="relative overflow-x-clip py-24 sm:py-32"
   >
     <div class="orb absolute top-0 right-1/4 h-[400px] w-[400px] bg-indigo-600/10" />
 

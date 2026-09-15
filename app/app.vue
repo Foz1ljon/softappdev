@@ -17,7 +17,7 @@ useHead({
 
 useSeoMeta({
   title: `${AGENCY_NAME} — Custom CRM, ERP & Mobile Development Agency`,
-  description: 'SoftappDev engineers high-performance CRM/ERP systems, cross-platform mobile applications, and scalable cloud solutions for enterprise clients.',
+  description: 'SoftAppDev engineers high-performance CRM/ERP systems, cross-platform mobile applications, and scalable cloud solutions for enterprise clients.',
   ogTitle: `${AGENCY_NAME} — Custom Software Development Agency`,
   ogDescription: 'Enterprise-grade CRM, ERP, mobile apps and cloud architecture — built in Uzbekistan for global scale.',
   ogImage: 'https://softappdev.uz/og/__og-image/image.png',

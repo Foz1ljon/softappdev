@@ -69,7 +69,7 @@ onMounted(() => {
           v-motion
           :hovered="{ scale: 1.04, transition: { type: 'spring', stiffness: 260, damping: 18 } }"
           :tapped="{ scale: 0.97 }"
-          class="inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors"
+          class="inline-flex min-h-10 items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors sm:min-h-0"
           :class="activeCategoryId === cat.id
             ? 'border-indigo-500/30 bg-indigo-500/15 text-indigo-300'
             : 'border-transparent bg-accentuated text-muted hover:text-highlighted'"

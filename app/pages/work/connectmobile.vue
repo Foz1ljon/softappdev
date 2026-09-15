@@ -82,7 +82,7 @@ onMounted(() => {
           to="/#portfolio"
           :initial="{ opacity: 0, y: -8 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 400 } }"
-          class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-highlighted"
+          class="mb-4 -ms-2 inline-flex min-h-10 items-center gap-2 rounded-full px-2 text-sm font-medium text-muted transition-colors hover:text-highlighted sm:mb-6"
         >
           <AppIcon
             name="i-lucide-arrow-left"
@@ -102,7 +102,7 @@ onMounted(() => {
               <span class="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-300">
                 {{ t('case.eyebrow') }}
               </span>
-              <span class="text-sm text-muted">{{ study.period }}</span>
+              <span class="text-sm text-muted">{{ lt(study.period) }}</span>
             </div>
 
             <h1
@@ -206,7 +206,7 @@ onMounted(() => {
     <!-- ── Ecosystem ── -->
     <section
       id="ecosystem"
-      class="relative py-24 sm:py-28"
+      class="relative overflow-x-clip py-24 sm:py-28"
     >
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-14 max-w-3xl">
@@ -292,7 +292,7 @@ onMounted(() => {
     <!-- ── Product deep dive ── -->
     <section
       id="deep-dive"
-      class="relative py-24 sm:py-28"
+      class="relative overflow-x-clip py-24 sm:py-28"
     >
       <div class="orb absolute top-1/3 -left-24 h-[420px] w-[420px] bg-indigo-600/10" />
 
@@ -422,7 +422,7 @@ onMounted(() => {
     <!-- ── Backend services ── -->
     <section
       id="backend"
-      class="relative py-24 sm:py-28"
+      class="relative overflow-x-clip py-24 sm:py-28"
     >
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-12 max-w-3xl">
@@ -489,7 +489,7 @@ onMounted(() => {
     <!-- ── Integrations ── -->
     <section
       id="integrations"
-      class="relative py-24 sm:py-28"
+      class="relative overflow-x-clip py-24 sm:py-28"
     >
       <div class="orb absolute top-1/4 right-0 h-[380px] w-[380px] bg-cyan-500/10" />
 
@@ -560,7 +560,7 @@ onMounted(() => {
     <section
       id="lifecycle"
       ref="lifecycleRef"
-      class="relative py-24 sm:py-28"
+      class="relative overflow-x-clip py-24 sm:py-28"
     >
       <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div class="mb-14 max-w-3xl">
@@ -622,7 +622,7 @@ onMounted(() => {
     </section>
 
     <!-- ── Principles & phases ── -->
-    <section class="relative py-24 sm:py-28">
+    <section class="relative overflow-x-clip py-24 sm:py-28">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-14 lg:grid-cols-2">
           <div>
@@ -664,7 +664,7 @@ onMounted(() => {
             <ol class="mt-8 space-y-4">
               <li
                 v-for="(phase, i) in study.phases"
-                :key="phase.period"
+                :key="phase.title.en"
                 v-motion
                 :initial="{ opacity: 0, y: 18 }"
                 :visible-once="{ opacity: 1, y: 0, transition: { duration: 460, delay: i * 70 } }"
@@ -674,7 +674,7 @@ onMounted(() => {
                   <h3 class="font-semibold text-highlighted">
                     {{ lt(phase.title) }}
                   </h3>
-                  <span class="shrink-0 text-xs font-medium text-indigo-300">{{ phase.period }}</span>
+                  <span class="shrink-0 text-xs font-medium text-indigo-300">{{ lt(phase.period) }}</span>
                 </div>
                 <p class="mt-2 text-sm leading-relaxed text-muted">
                   {{ lt(phase.body) }}

@@ -71,7 +71,7 @@ onUnmounted(() => {
         class="flex shrink-0 items-center gap-2 rounded-md p-1 -ms-1 focus:outline-2 focus:outline-indigo-500/25"
       >
         <AppLogo class="h-7 w-7" />
-        <span class="text-lg font-bold tracking-tight text-highlighted">SoftappDev</span>
+        <span class="text-lg font-bold tracking-tight text-highlighted">SoftAppDev</span>
       </NuxtLink>
 
       <!-- Desktop nav -->
@@ -100,7 +100,7 @@ onUnmounted(() => {
           v-motion
           :hovered="{ scale: 1.06 }"
           :tapped="{ scale: 0.94 }"
-          class="rounded-full bg-accentuated px-3 py-1 text-xs font-semibold text-muted transition-colors hover:text-highlighted"
+          class="flex h-10 items-center rounded-full bg-accentuated px-3 text-xs font-semibold text-muted transition-colors hover:text-highlighted lg:h-8"
           :aria-label="`Switch language, current ${currentLocale.label}`"
           @click="toggleLocale"
         >
@@ -111,7 +111,7 @@ onUnmounted(() => {
           v-motion
           :hovered="{ scale: 1.1, rotate: 12 }"
           :tapped="{ scale: 0.9 }"
-          class="flex h-8 w-8 items-center justify-center rounded-full bg-accentuated transition-colors hover:bg-indigo-500/15"
+          class="flex h-10 w-10 items-center justify-center rounded-full bg-accentuated transition-colors hover:bg-indigo-500/15 lg:h-8 lg:w-8"
           :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
           @click="toggleDark"
         >
@@ -136,7 +136,7 @@ onUnmounted(() => {
         </button>
 
         <button
-          class="flex h-8 w-8 items-center justify-center rounded-full text-muted transition-colors hover:text-highlighted lg:hidden"
+          class="flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors hover:text-highlighted lg:hidden"
           :aria-label="mobileOpen ? 'Close menu' : 'Open menu'"
           @click="mobileOpen = !mobileOpen"
         >

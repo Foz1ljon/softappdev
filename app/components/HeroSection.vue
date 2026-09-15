@@ -83,7 +83,7 @@ const cards: HeroCard[] = [
     chip: 'bg-cyan-500/15 accent-cyan',
     float: 'animate-float-slow',
     // Centred without a translate utility: the tilt binding owns `transform`.
-    pos: 'left-[calc(50%-8.5rem)] top-64 w-[17rem]',
+    pos: 'left-[calc(50%-8.5rem)] top-64 w-[17rem] lg:top-[min(16rem,29vh)]',
     status: 'live',
     bars: [30, 52, 44, 68, 58, 84, 76]
   }
@@ -133,7 +133,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="hero-root relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+  <section class="hero-root relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28 lg:flex lg:min-h-svh lg:flex-col lg:justify-center lg:pt-[max(5rem,11vh)] lg:pb-[max(1.5rem,3vh)]">
     <!-- Three.js scene -->
     <HeroBackground />
 
@@ -143,13 +143,13 @@ onMounted(() => {
     <div class="hero-orb orb absolute -bottom-20 left-1/2 h-[350px] w-[350px] bg-emerald-500/10" />
     <div class="bg-grid absolute inset-0" />
 
-    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <!-- Left copy -->
         <div>
           <div
             ref="badgeRef"
-            class="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-sm font-medium accent-emerald"
+            class="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-sm font-medium accent-emerald lg:mb-[clamp(0.5rem,1.8vh,1.5rem)]"
           >
             <span class="relative flex h-2 w-2">
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -160,7 +160,7 @@ onMounted(() => {
 
           <h1
             ref="headlineRef"
-            class="text-4xl font-extrabold leading-tight tracking-tight text-highlighted sm:text-5xl lg:text-6xl"
+            class="text-4xl font-extrabold leading-tight tracking-tight text-highlighted sm:text-5xl lg:text-[clamp(2.125rem,4.8vh,3.75rem)]"
           >
             {{ t('hero.title.a') }}
             <br>
@@ -171,14 +171,14 @@ onMounted(() => {
 
           <p
             ref="subtitleRef"
-            class="mt-6 max-w-xl text-lg leading-relaxed text-muted"
+            class="mt-6 max-w-xl text-lg leading-relaxed text-muted lg:mt-[clamp(0.5rem,2vh,1.5rem)] lg:text-[clamp(0.9375rem,1.8vh,1.125rem)]"
           >
             {{ t('hero.subtitle') }}
           </p>
 
           <div
             ref="ctasRef"
-            class="mt-8 flex flex-wrap gap-4"
+            class="mt-8 flex flex-wrap gap-4 lg:mt-[clamp(0.75rem,2.6vh,2rem)]"
           >
             <button
               v-motion
@@ -211,7 +211,7 @@ onMounted(() => {
           <!-- Featured project shortcut -->
           <NuxtLink
             to="/work/connectmobile"
-            class="group mt-8 inline-flex items-center gap-3 rounded-2xl border border-default bg-elevated/50 p-3 pr-4 text-left backdrop-blur-sm transition-colors hover:border-indigo-500/40 hover:bg-accentuated/60"
+            class="group mt-8 inline-flex items-center gap-3 rounded-2xl border border-default bg-elevated/50 p-3 pr-4 text-left backdrop-blur-sm transition-colors hover:border-indigo-500/40 hover:bg-accentuated/60 lg:mt-[clamp(0.5rem,2.4vh,2rem)]"
           >
             <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10">
               <AppIcon
@@ -237,7 +237,7 @@ onMounted(() => {
         <!-- Right: 3D product cards -->
         <div
           ref="cardsRef"
-          class="relative hidden h-[510px] lg:block"
+          class="relative hidden h-[510px] lg:block lg:h-[min(510px,56vh)]"
         >
           <div
             v-for="card in cards"
@@ -389,7 +389,7 @@ onMounted(() => {
       </div>
 
       <!-- Capability marquee -->
-      <div class="hero-marquee marquee-mask mt-16 overflow-hidden border-t border-default pt-6">
+      <div class="hero-marquee marquee-mask mt-16 overflow-hidden border-t border-default pt-6 lg:mt-[clamp(0.75rem,3.6vh,4rem)] lg:pt-[clamp(0.5rem,2vh,1.5rem)]">
         <div class="animate-marquee flex w-max items-center gap-8">
           <span
             v-for="(item, i) in marqueeItems"

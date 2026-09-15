@@ -25,8 +25,8 @@ export default defineNuxtConfig({
 
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://softappdev.uz',
-    name: 'SoftappDev',
-    description: 'SoftappDev is an IT agency engineering custom CRM/ERP systems, high-load web platforms, cross-platform mobile applications and cloud solutions.',
+    name: 'SoftAppDev',
+    description: 'SoftAppDev is an IT agency engineering custom CRM/ERP systems, high-load web platforms, cross-platform mobile applications and cloud solutions.',
     defaultLocale: 'en'
   },
 

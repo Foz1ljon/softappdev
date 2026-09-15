@@ -14,15 +14,16 @@ export interface JsonLdNode {
   [key: string]: unknown
 }
 
-export const AGENCY_NAME = 'SoftappDev'
-export const AGENCY_LEGAL_NAME = 'SoftappDev LLC'
+export const AGENCY_NAME = 'SoftAppDev'
+export const AGENCY_LEGAL_NAME = 'SoftAppDev LLC'
 export const AGENCY_URL = 'https://softappdev.uz'
 export const AGENCY_LOGO = 'https://softappdev.uz/favicon.svg'
 export const AGENCY_EMAIL = 'hello@softappdev.uz'
+export const AGENCY_TELEGRAM = 'coderf'
 export const CONNECTMOBILE_URL = 'https://connectmobile.uz'
 
 const DEFAULT_KEYWORDS = [
-  'SoftappDev',
+  'SoftAppDev',
   'IT agency Uzbekistan',
   'custom CRM development',
   'ERP systems',

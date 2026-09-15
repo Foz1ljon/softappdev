@@ -9,7 +9,7 @@ import {
   useEstimator,
   type OptionEntry
 } from '~/composables/useEstimator'
-import { AGENCY_EMAIL } from '~/composables/useSeo'
+import { AGENCY_EMAIL, AGENCY_TELEGRAM } from '~/composables/useSeo'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -24,6 +24,7 @@ const {
   errorsByField,
   isFirstStep,
   progressPercent,
+  validateStep,
   nextStep,
   prevStep,
   submitEstimate,
@@ -40,7 +41,56 @@ async function handleNext() {
   nextStep()
 }
 
+/**
+ * Folds every estimator answer into one plain-text brief. Telegram renders the
+ * draft as-is, so the layout has to read well without any markup.
+ */
+const telegramDraft = computed(() => {
+  const isUz = locale.value === 'uz'
+  const label = (en: string, uz: string) => (isUz ? uz : en)
+  const pick = <T extends OptionEntry>(list: T[], value: string | null) => {
+    const entry = list.find(item => item.value === value)
+    return entry ? optionLabel(entry) : '—'
+  }
+
+  const lines = [
+    label('New project request — SoftAppDev', 'Yangi loyiha so‘rovi — SoftAppDev'),
+    '',
+    `${label('Project type', 'Loyiha turi')}: ${pick(estimatorProjectTypes, state.projectType)}`,
+    `${label('Budget', 'Byudjet')}: ${pick(estimatorBudgets, state.budget)}`,
+    `${label('Timeline', 'Muddat')}: ${pick(estimatorTimelines, state.timeline)}`,
+    '',
+    `${label('Name', 'Ism')}: ${state.name.trim() || '—'}`,
+    `${label('Email', 'Email')}: ${state.email.trim() || '—'}`
+  ]
+
+  if (state.company.trim()) {
+    lines.push(`${label('Company', 'Kompaniya')}: ${state.company.trim()}`)
+  }
+
+  if (state.message.trim()) {
+    lines.push('', `${label('Details', 'Tafsilotlar')}:`, state.message.trim())
+  }
+
+  return lines.join('\n')
+})
+
+/** Telegram opens this link with the brief already sitting in the message box. */
+const telegramUrl = computed(() =>
+  `https://t.me/${AGENCY_TELEGRAM}?text=${encodeURIComponent(telegramDraft.value)}`
+)
+
+function openTelegramDraft() {
+  window.open(telegramUrl.value, '_blank', 'noopener')
+}
+
 async function handleSubmit() {
+  if (validateStep(estimatorStepCount).length > 0) {
+    return
+  }
+  // Opened straight from the click so the browser still counts it as a user
+  // gesture — awaiting the API call first would get the tab blocked.
+  openTelegramDraft()
   await submitEstimate()
 }
 
@@ -66,7 +116,7 @@ onMounted(() => {
   <section
     id="contact"
     ref="sectionRef"
-    class="relative py-24 sm:py-32"
+    class="relative overflow-x-clip py-24 sm:py-32"
   >
     <div class="orb absolute bottom-0 left-1/3 h-[400px] w-[400px] bg-emerald-600/10" />
 
@@ -115,15 +165,29 @@ onMounted(() => {
               class="text-indigo-400 hover:underline"
             >{{ AGENCY_EMAIL }}</a>
           </p>
-          <button
-            v-motion
-            :hovered="{ scale: 1.04 }"
-            :tapped="{ scale: 0.97 }"
-            class="mt-8 rounded-full border border-default px-5 py-2 text-sm font-medium text-highlighted transition-colors hover:bg-accentuated"
-            @click="resetEstimator"
-          >
-            {{ t('contact.submitAnother') }}
-          </button>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a
+              :href="telegramUrl"
+              target="_blank"
+              rel="noopener"
+              class="shimmer inline-flex min-h-10 items-center gap-2 rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors hover:bg-indigo-500"
+            >
+              <AppIcon
+                name="i-simple-icons-telegram"
+                class="h-4 w-4"
+              />
+              {{ t('contact.telegram.open') }}
+            </a>
+            <button
+              v-motion
+              :hovered="{ scale: 1.04 }"
+              :tapped="{ scale: 0.97 }"
+              class="inline-flex min-h-10 items-center rounded-full border border-default px-5 py-2 text-sm font-medium text-highlighted transition-colors hover:bg-accentuated"
+              @click="resetEstimator"
+            >
+              {{ t('contact.submitAnother') }}
+            </button>
+          </div>
         </div>
 
         <!-- Estimator -->
@@ -352,44 +416,18 @@ onMounted(() => {
                 </p>
               </div>
 
-              <div class="rounded-2xl border border-default bg-accentuated/40 p-4 text-sm">
-                <div class="text-xs font-semibold uppercase tracking-wider text-muted">
-                  Summary
+              <div class="rounded-2xl border border-default bg-accentuated/40 p-4">
+                <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted">
+                  <AppIcon
+                    name="i-simple-icons-telegram"
+                    class="h-3.5 w-3.5"
+                  />
+                  {{ lt({ en: 'Message preview', uz: 'Xabar ko‘rinishi' }) }}
                 </div>
-                <dl class="mt-3 space-y-1.5">
-                  <div class="flex gap-2">
-                    <dt class="text-muted">
-                      Project
-                    </dt>
-                    <dd class="font-medium text-highlighted">
-                      {{ optionLabel(estimatorProjectTypes.find(item => item.value === state.projectType) ?? estimatorProjectTypes[0]!) }}
-                    </dd>
-                  </div>
-                  <div class="flex gap-2">
-                    <dt class="text-muted">
-                      Budget
-                    </dt>
-                    <dd class="font-medium text-highlighted">
-                      {{ optionLabel(estimatorBudgets.find(item => item.value === state.budget) ?? estimatorBudgets[0]!) }}
-                    </dd>
-                  </div>
-                  <div class="flex gap-2">
-                    <dt class="text-muted">
-                      Timeline
-                    </dt>
-                    <dd class="font-medium text-highlighted">
-                      {{ optionLabel(estimatorTimelines.find(item => item.value === state.timeline) ?? estimatorTimelines[0]!) }}
-                    </dd>
-                  </div>
-                  <div class="flex gap-2">
-                    <dt class="text-muted">
-                      Contact
-                    </dt>
-                    <dd class="font-medium text-highlighted">
-                      {{ state.name }} · {{ state.email }}
-                    </dd>
-                  </div>
-                </dl>
+                <pre class="mt-3 whitespace-pre-wrap break-words font-sans text-sm leading-relaxed text-highlighted">{{ telegramDraft }}</pre>
+                <p class="mt-3 text-xs text-muted">
+                  {{ t('contact.telegram.hint') }}
+                </p>
               </div>
             </div>
           </div>
@@ -436,7 +474,7 @@ onMounted(() => {
               @click="handleSubmit"
             >
               <AppIcon
-                :name="submitting ? 'i-lucide-loader-2' : 'i-lucide-send'"
+                :name="submitting ? 'i-lucide-loader-2' : 'i-simple-icons-telegram'"
                 class="h-4 w-4"
                 :class="submitting ? 'animate-spin' : ''"
               />

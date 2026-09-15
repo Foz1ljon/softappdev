@@ -38,7 +38,7 @@ export interface CaseIntegration {
 }
 
 export interface CasePhase {
-  period: string
+  period: LocalizedText
   title: LocalizedText
   body: LocalizedText
 }
@@ -468,27 +468,27 @@ const lifecycle: LifecycleStep[] = [
 
 const phases: CasePhase[] = [
   {
-    period: '2024 · Q2',
+    period: t('June 2024', '2024-yil iyun'),
     title: t('Discovery & blueprint', 'Tahlil va arxitektura'),
     body: t('Domain mapping of the retail and delivery process, entity and status model, integration feasibility with payment and carrier providers, and clickable flows for the four products.', 'Savdo va yetkazish jarayonining domen xaritasi, entity va status modeli, to‘lov va kuryer provayderlari bilan integratsiya imkoniyatlari hamda to‘rt mahsulot uchun bosiladigan prototiplar.')
   },
   {
-    period: '2024 · Q3',
+    period: t('2024 · Q3', '2024 · 3-chorak'),
     title: t('First vertical slice', 'Birinchi vertikal kesim'),
     body: t('Customer app with catalog, cart, Click checkout and order tracking, plus the core backend services and a minimal admin order list to prove the loop end to end.', 'Katalog, savat, Click to‘lov va buyurtma kuzatuvi bilan mijoz ilovasi hamda yadro backend servislari va butun zanjirni uchdan-oxirigacha isbotlash uchun minimal admin buyurtmalar ro‘yxati.')
   },
   {
-    period: '2024 · Q4',
+    period: t('2024 · Q4', '2024 · 4-chorak'),
     title: t('Courier terminal & dispatch', 'Kuryer terminali va dispetcher'),
     body: t('Offline operation queue, scanning and proof of handover, cash ledger, live fleet map and the dispatch board in the operations dashboard.', 'Offline amallar navbati, skanerlash va topshirish isboti, naqd daftar, jonli flot xaritasi va boshqaruv panelidagi dispetcher ekrani.')
   },
   {
-    period: '2025',
+    period: t('2025', '2025'),
     title: t('Carriers, finance & scale', 'Kuryerlar, moliya va miqyos'),
     body: t('Uzpost and BTS Express adapters, commission and payout reporting, analytics workers, caching strategy and load hardening for peak retail season.', 'Uzpost va BTS Express adapterlari, komissiya va to‘lov hisobotlari, analitika ishchilari, kesh strategiyasi va savdo mavsumidagi yuklamaga chidamlilik.')
   },
   {
-    period: '2026',
+    period: t('2026', '2026'),
     title: t('Release train', 'Doimiy reliz oqimi'),
     body: t('Trunk-based delivery with feature flags, additional payment methods, marketplace onboarding for partner stores and a second-language expansion of the storefront.', 'Feature flag bilan trunk-based yetkazib berish, qo‘shimcha to‘lov usullari, hamkor do‘konlar uchun marketpleys integratsiyasi va vitrinaning ikkinchi tilga kengayishi.')
   }
@@ -537,7 +537,7 @@ export function useCaseStudy() {
     path: '/work/connectmobile',
     liveUrl: 'https://connectmobile.uz',
     domain: 'connectmobile.uz',
-    period: '2024 — present',
+    period: t('June 2024 — present', '2024-yil iyundan — hozirgacha'),
     tagline: t(
       'All-in-One E-Commerce & Delivery Ecosystem',
       'E-tijorat va yetkazish uchun yagona ekotizim'
