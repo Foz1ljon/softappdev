@@ -10,42 +10,17 @@ useHead({
     { rel: 'apple-touch-icon', href: '/favicon.svg' }
   ],
   htmlAttrs: {
-    lang: 'en',
-    class: 'dark'
+    lang: 'uz'
   }
 })
 
 useSeoMeta({
-  title: `${AGENCY_NAME} — Custom CRM, ERP & Mobile Development Agency`,
-  description: 'SoftAppDev engineers high-performance CRM/ERP systems, cross-platform mobile applications, and scalable cloud solutions for enterprise clients.',
-  ogTitle: `${AGENCY_NAME} — Custom Software Development Agency`,
-  ogDescription: 'Enterprise-grade CRM, ERP, mobile apps and cloud architecture — built in Uzbekistan for global scale.',
+  title: `${AGENCY_NAME} — CRM, ERP va mobil ilovalar ishlab chiqish agentligi`,
+  description: 'SoftAppDev korporativ mijozlar uchun yuqori unumdorlikdagi CRM/ERP tizimlari, ko‘p platformali mobil ilovalar va kengayuvchan bulut yechimlarini ishlab chiqadi.',
+  ogTitle: `${AGENCY_NAME} — Dasturiy ta’minot ishlab chiqish agentligi`,
+  ogDescription: 'Korporativ darajadagi CRM, ERP, mobil ilovalar va bulut arxitekturasi — O‘zbekistonda, global miqyos uchun qurilgan.',
   ogImage: 'https://softappdev.uz/og/__og-image/image.png',
   twitterCard: 'summary_large_image'
-})
-
-// ── Dark mode ──
-const colorMode = useCookie<'light' | 'dark'>('sad-color-mode', {
-  default: () => 'dark',
-  maxAge: 60 * 60 * 24 * 365,
-  sameSite: 'lax'
-})
-
-const isDark = computed({
-  get: () => colorMode.value === 'dark',
-  set: (val: boolean) => {
-    colorMode.value = val ? 'dark' : 'light'
-    document.documentElement.classList.toggle('dark', val)
-  }
-})
-
-provide('isDark', isDark)
-provide('toggleDark', () => {
-  isDark.value = !isDark.value
-})
-
-onMounted(() => {
-  document.documentElement.classList.toggle('dark', isDark.value)
 })
 </script>
 

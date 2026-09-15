@@ -11,8 +11,8 @@ interface EstimatePayload {
 }
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const PROJECT_TYPES = ['crm-erp', 'mobile', 'web-platform', 'cloud']
-const BUDGETS = ['under-10k', '10k-30k', '30k-80k', '80k-plus']
+const PROJECT_TYPES = ['crm-erp', 'mobile', 'desktop', 'web-platform', 'telegram', 'ai', 'cloud']
+const BUDGETS = ['1k-5k', '5k-10k', '10k-20k', '20k-30k']
 const TIMELINES = ['asap', '1-3-months', '3-6-months', 'flexible']
 const MIN_MESSAGE_LENGTH = 20
 const RATE_LIMIT_MAX = 5
@@ -45,7 +45,7 @@ function reference() {
 export default defineEventHandler(async (event) => {
   const ip = getRequestHeader(event, 'x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
   if (isRateLimited(ip)) {
-    throw createError({ statusCode: 429, statusMessage: 'Too many requests' })
+    throw createError({ statusCode: 429, statusMessage: 'So‘rovlar juda ko‘p' })
   }
 
   const body = await readBody<EstimatePayload>(event)
@@ -61,22 +61,22 @@ export default defineEventHandler(async (event) => {
   const company = body?.company?.trim() ?? ''
 
   if (name.length < 2) {
-    throw createError({ statusCode: 400, statusMessage: 'A name is required' })
+    throw createError({ statusCode: 400, statusMessage: 'Ism kiritilishi shart' })
   }
   if (!EMAIL_PATTERN.test(email)) {
-    throw createError({ statusCode: 400, statusMessage: 'A valid email is required' })
+    throw createError({ statusCode: 400, statusMessage: 'To‘g‘ri email kiriting' })
   }
   if (message.length < MIN_MESSAGE_LENGTH) {
-    throw createError({ statusCode: 400, statusMessage: `Please describe the project in at least ${MIN_MESSAGE_LENGTH} characters` })
+    throw createError({ statusCode: 400, statusMessage: `Loyihani kamida ${MIN_MESSAGE_LENGTH} ta belgida tasvirlab bering` })
   }
   if (body.projectType && !PROJECT_TYPES.includes(body.projectType)) {
-    throw createError({ statusCode: 400, statusMessage: 'Unknown project type' })
+    throw createError({ statusCode: 400, statusMessage: 'Noma’lum loyiha turi' })
   }
   if (body.budget && !BUDGETS.includes(body.budget)) {
-    throw createError({ statusCode: 400, statusMessage: 'Unknown budget range' })
+    throw createError({ statusCode: 400, statusMessage: 'Noma’lum byudjet oralig‘i' })
   }
   if (body.timeline && !TIMELINES.includes(body.timeline)) {
-    throw createError({ statusCode: 400, statusMessage: 'Unknown timeline' })
+    throw createError({ statusCode: 400, statusMessage: 'Noma’lum muddat' })
   }
 
   const lead = {

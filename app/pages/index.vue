@@ -5,10 +5,10 @@ const { featuredProject } = useProjects()
 
 useSeo(
   {
-    title: `${AGENCY_NAME} — Custom CRM, ERP & Mobile Development Agency`,
-    description: 'End-to-end custom software development — from enterprise architecture and microservices backends to polished mobile apps. Featuring ConnectMobile, our flagship e-commerce ecosystem.',
+    title: `${AGENCY_NAME} — Mobil, desktop, web va AI yechimlari ishlab chiqish agentligi`,
+    description: 'Boshidan oxirigacha dasturiy ta’minot ishlab chiqish — korporativ arxitektura va mikroservis backenddan tortib mobil, desktop va Telegram ilovalari hamda AI integratsiyalarigacha. Asosiy keysimiz — ConnectMobile e-tijorat ekotizimi.',
     path: '/',
-    keywords: ['ConnectMobile', 'e-commerce mobile app', 'Capacitor development', 'NestJS backend', 'Click payment integration']
+    keywords: ['ConnectMobile', 'e-tijorat mobil ilova', 'Capacitor ishlab chiqish', 'NestJS backend', 'Telegram Mini App', 'AI integratsiya', 'Click to‘lov integratsiyasi']
   },
   {
     software: {

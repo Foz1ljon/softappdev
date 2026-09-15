@@ -26,8 +26,8 @@ export default defineNuxtConfig({
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://softappdev.uz',
     name: 'SoftAppDev',
-    description: 'SoftAppDev is an IT agency engineering custom CRM/ERP systems, high-load web platforms, cross-platform mobile applications and cloud solutions.',
-    defaultLocale: 'en'
+    description: 'SoftAppDev — mobil, desktop va web ilovalar, Telegram ilovalari, CRM/ERP tizimlari, AI integratsiyalari va DevOps xizmatlarini ishlab chiqadigan IT agentlik.',
+    defaultLocale: 'uz'
   },
 
   runtimeConfig: {

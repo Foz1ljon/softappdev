@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import { AGENCY_EMAIL, AGENCY_LEGAL_NAME, AGENCY_NAME } from '~/composables/useSeo'
 
-const { t, lt } = useLocale()
+const { t } = useLocale()
 const currentYear = new Date().getFullYear()
 
 const serviceLinks = [
-  { label: { en: 'CRM & ERP systems', uz: 'CRM va ERP tizimlari' }, href: '#services' },
-  { label: { en: 'Mobile development', uz: 'Mobil ishlab chiqish' }, href: '#services' },
-  { label: { en: 'Backend & APIs', uz: 'Backend va API' }, href: '#services' },
-  { label: { en: 'UI/UX systems', uz: 'UI/UX tizimlari' }, href: '#services' }
+  { label: 'Mobil va desktop ilovalar', href: '#services' },
+  { label: 'Web platformalar va API', href: '#services' },
+  { label: 'Telegram ilovalar', href: '#services' },
+  { label: 'AI integratsiyalar', href: '#services' },
+  { label: 'Cloud va DevOps', href: '#services' }
 ]
 
 const companyLinks = [
-  { label: { en: 'Portfolio', uz: 'Portfolio' }, href: '#portfolio' },
-  { label: { en: 'Technology stack', uz: 'Texnologiyalar' }, href: '#stack' },
-  { label: { en: 'How we work', uz: 'Qanday ishlaymiz' }, href: '#process' },
-  { label: { en: 'About us', uz: 'Kompaniya' }, href: '#about' }
+  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Texnologiyalar', href: '#stack' },
+  { label: 'Qanday ishlaymiz', href: '#process' },
+  { label: 'Kompaniya', href: '#about' }
 ]
 
 const socialLinks = [
@@ -47,10 +48,7 @@ async function go(href: string) {
             <span class="text-lg font-bold tracking-tight text-highlighted">{{ AGENCY_NAME }}</span>
           </NuxtLink>
           <p class="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-            {{ lt({
-              en: 'Product engineering studio building CRM/ERP systems, e-commerce platforms, logistics software and cross-platform mobile apps.',
-              uz: 'CRM/ERP tizimlari, e-tijorat platformalari, logistika dasturlari va ko‘p platformali mobil ilovalar quradigan mahsulot muhandisligi studiyasi.'
-            }) }}
+            {{ t('footer.tagline') }}
           </p>
           <div class="mt-5 flex items-center gap-3">
             <a
@@ -77,13 +75,13 @@ async function go(href: string) {
           <ul class="mt-3 space-y-1 sm:mt-4 sm:space-y-2.5">
             <li
               v-for="link in serviceLinks"
-              :key="link.label.en"
+              :key="link.label"
             >
               <button
                 class="inline-flex min-h-9 items-center text-left text-sm text-muted transition-colors hover:text-highlighted sm:min-h-0"
                 @click="go(link.href)"
               >
-                {{ lt(link.label) }}
+                {{ link.label }}
               </button>
             </li>
           </ul>
@@ -96,13 +94,13 @@ async function go(href: string) {
           <ul class="mt-3 space-y-1 sm:mt-4 sm:space-y-2.5">
             <li
               v-for="link in companyLinks"
-              :key="link.label.en"
+              :key="link.label"
             >
               <button
                 class="inline-flex min-h-9 items-center text-left text-sm text-muted transition-colors hover:text-highlighted sm:min-h-0"
                 @click="go(link.href)"
               >
-                {{ lt(link.label) }}
+                {{ link.label }}
               </button>
             </li>
           </ul>
@@ -159,7 +157,7 @@ async function go(href: string) {
             {{ t('footer.terms') }}
           </NuxtLink>
           <span class="text-xs text-muted">
-            {{ lt({ en: 'Built with Vue, three.js and a lot of tests.', uz: 'Vue, three.js va ko‘plab testlar bilan qurilgan.' }) }}
+            {{ t('footer.builtWith') }}
           </span>
         </div>
       </div>

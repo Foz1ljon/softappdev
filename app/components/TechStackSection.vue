@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, lt } = useLocale()
+const { t } = useLocale()
 const { categories, activeCategoryId, activeCategory, selectCategory } = useTechStack()
 
 const sectionRef = ref<HTMLElement>()
@@ -79,7 +79,7 @@ onMounted(() => {
             :name="cat.icon"
             class="h-3.5 w-3.5"
           />
-          {{ lt({ en: cat.label, uz: cat.labelUz }) }}
+          {{ cat.label }}
         </button>
       </div>
 

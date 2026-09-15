@@ -13,7 +13,7 @@ import { AGENCY_EMAIL, AGENCY_TELEGRAM } from '~/composables/useSeo'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { t, lt, locale } = useLocale()
+const { t } = useLocale()
 
 const {
   step,
@@ -33,10 +33,6 @@ const {
 
 const sectionRef = ref<HTMLElement>()
 
-function optionLabel(entry: OptionEntry) {
-  return locale.value === 'uz' ? entry.labelUz : entry.label
-}
-
 async function handleNext() {
   nextStep()
 }
@@ -46,30 +42,26 @@ async function handleNext() {
  * draft as-is, so the layout has to read well without any markup.
  */
 const telegramDraft = computed(() => {
-  const isUz = locale.value === 'uz'
-  const label = (en: string, uz: string) => (isUz ? uz : en)
-  const pick = <T extends OptionEntry>(list: T[], value: string | null) => {
-    const entry = list.find(item => item.value === value)
-    return entry ? optionLabel(entry) : '—'
-  }
+  const pick = <T extends OptionEntry>(list: T[], value: string | null) =>
+    list.find(item => item.value === value)?.label ?? '—'
 
   const lines = [
-    label('New project request — SoftAppDev', 'Yangi loyiha so‘rovi — SoftAppDev'),
+    'Yangi loyiha so‘rovi — SoftAppDev',
     '',
-    `${label('Project type', 'Loyiha turi')}: ${pick(estimatorProjectTypes, state.projectType)}`,
-    `${label('Budget', 'Byudjet')}: ${pick(estimatorBudgets, state.budget)}`,
-    `${label('Timeline', 'Muddat')}: ${pick(estimatorTimelines, state.timeline)}`,
+    `Loyiha turi: ${pick(estimatorProjectTypes, state.projectType)}`,
+    `Byudjet: ${pick(estimatorBudgets, state.budget)}`,
+    `Muddat: ${pick(estimatorTimelines, state.timeline)}`,
     '',
-    `${label('Name', 'Ism')}: ${state.name.trim() || '—'}`,
-    `${label('Email', 'Email')}: ${state.email.trim() || '—'}`
+    `Ism: ${state.name.trim() || '—'}`,
+    `Email: ${state.email.trim() || '—'}`
   ]
 
   if (state.company.trim()) {
-    lines.push(`${label('Company', 'Kompaniya')}: ${state.company.trim()}`)
+    lines.push(`Kompaniya: ${state.company.trim()}`)
   }
 
   if (state.message.trim()) {
-    lines.push('', `${label('Details', 'Tafsilotlar')}:`, state.message.trim())
+    lines.push('', 'Tafsilotlar:', state.message.trim())
   }
 
   return lines.join('\n')
@@ -157,7 +149,7 @@ onMounted(() => {
             v-if="reference"
             class="mt-4 inline-block rounded-full bg-accentuated px-4 py-1.5 text-xs font-medium text-muted"
           >
-            Reference: <span class="font-bold text-highlighted">{{ reference }}</span>
+            {{ t('contact.reference') }}: <span class="font-bold text-highlighted">{{ reference }}</span>
           </p>
           <p class="mt-3 text-sm text-muted">
             <a
@@ -240,7 +232,7 @@ onMounted(() => {
                   />
                   <div>
                     <div class="font-semibold text-highlighted">
-                      {{ optionLabel(item) }}
+                      {{ item.label }}
                     </div>
                     <div class="mt-0.5 text-xs text-muted">
                       {{ item.description }}
@@ -279,7 +271,7 @@ onMounted(() => {
                   />
                   <div>
                     <div class="text-sm font-semibold text-highlighted">
-                      {{ optionLabel(item) }}
+                      {{ item.label }}
                     </div>
                     <div class="text-xs text-muted">
                       {{ item.description }}
@@ -315,7 +307,7 @@ onMounted(() => {
                   />
                   <div>
                     <div class="text-sm font-semibold text-highlighted">
-                      {{ optionLabel(item) }}
+                      {{ item.label }}
                     </div>
                     <div class="text-xs text-muted">
                       {{ item.description }}
@@ -422,7 +414,7 @@ onMounted(() => {
                     name="i-simple-icons-telegram"
                     class="h-3.5 w-3.5"
                   />
-                  {{ lt({ en: 'Message preview', uz: 'Xabar ko‘rinishi' }) }}
+                  {{ t('contact.telegram.preview') }}
                 </div>
                 <pre class="mt-3 whitespace-pre-wrap break-words font-sans text-sm leading-relaxed text-highlighted">{{ telegramDraft }}</pre>
                 <p class="mt-3 text-xs text-muted">
@@ -483,10 +475,7 @@ onMounted(() => {
           </div>
 
           <p class="mt-5 text-center text-xs text-muted">
-            {{ lt({
-              en: 'Prefer email? Write to',
-              uz: 'Email qulaymi? Yozing:'
-            }) }}
+            {{ t('contact.emailHint') }}
             <a
               :href="`mailto:${AGENCY_EMAIL}`"
               class="text-indigo-400 hover:underline"

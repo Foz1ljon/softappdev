@@ -2,8 +2,8 @@
 import { AGENCY_NAME, AGENCY_EMAIL } from '~/composables/useSeo'
 
 useSeo({
-  title: `${AGENCY_NAME} — Terms of Service`,
-  description: 'Terms of service for SoftAppDev IT agency.',
+  title: `${AGENCY_NAME} — Xizmat shartlari`,
+  description: 'SoftAppDev IT agentligining xizmat ko‘rsatish shartlari.',
   path: '/terms',
   noindex: true
 })
@@ -13,34 +13,34 @@ useSeo({
   <div class="pt-32 pb-20">
     <article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
       <h1 class="text-3xl font-extrabold tracking-tight text-highlighted sm:text-4xl">
-        Terms of Service
+        Xizmat shartlari
       </h1>
       <div class="mt-8 space-y-6 text-muted leading-relaxed">
         <section>
           <h2 class="text-xl font-bold text-highlighted">
-            1. Services
+            1. Xizmatlar
           </h2>
           <p class="mt-2">
-            SoftAppDev provides custom software development services including CRM/ERP systems, mobile applications, web platforms, and cloud solutions.
+            SoftAppDev buyurtmaga asosan dasturiy ta’minot ishlab chiqadi: CRM/ERP tizimlari, mobil va desktop ilovalar, web platformalar, Telegram ilovalari, AI integratsiyalari hamda bulut yechimlari.
           </p>
         </section>
         <section>
           <h2 class="text-xl font-bold text-highlighted">
-            2. Intellectual Property
+            2. Intellektual mulk
           </h2>
           <p class="mt-2">
-            Unless otherwise agreed, all intellectual property developed for a client under a signed statement of work belongs to the client upon full payment.
+            Agar boshqacha kelishilmagan bo‘lsa, imzolangan shartnoma doirasida mijoz uchun yaratilgan barcha intellektual mulk to‘liq to‘lov amalga oshirilgach mijozga o‘tadi.
           </p>
         </section>
         <section>
           <h2 class="text-xl font-bold text-highlighted">
-            3. Contact
+            3. Bog‘lanish
           </h2>
           <p class="mt-2">
-            Questions? Contact us at <a
+            Savollaringiz bormi? <a
               :href="`mailto:${AGENCY_EMAIL}`"
               class="text-indigo-400 hover:underline"
-            >{{ AGENCY_EMAIL }}</a>.
+            >{{ AGENCY_EMAIL }}</a> manziliga yozing.
           </p>
         </section>
       </div>

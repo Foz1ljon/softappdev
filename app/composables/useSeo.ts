@@ -24,14 +24,19 @@ export const CONNECTMOBILE_URL = 'https://connectmobile.uz'
 
 const DEFAULT_KEYWORDS = [
   'SoftAppDev',
-  'IT agency Uzbekistan',
-  'custom CRM development',
-  'ERP systems',
-  'cross-platform mobile development',
-  'Capacitor app development',
-  'NestJS backend',
-  'high-load web platforms',
-  'cloud solutions',
+  'IT agentlik O‘zbekiston',
+  'dasturiy ta’minot ishlab chiqish',
+  'CRM tizimi',
+  'ERP tizimi',
+  'mobil ilova ishlab chiqish',
+  'desktop ilova ishlab chiqish',
+  'web platforma',
+  'Telegram bot va Mini App',
+  'AI integratsiya',
+  'DevOps xizmatlari',
+  'Capacitor',
+  'NestJS',
+  'MongoDB',
   'ConnectMobile'
 ]
 
@@ -44,8 +49,8 @@ function buildOrganizationSchema(): JsonLdNode {
     'url': AGENCY_URL,
     'logo': AGENCY_LOGO,
     'email': AGENCY_EMAIL,
-    'description': 'IT agency specializing in custom CRM/ERP systems, high-load web platforms, native and cross-platform mobile development, and cloud solutions.',
-    'foundingDate': '2021',
+    'description': 'Mobil, desktop va web ilovalar, Telegram ilovalari, CRM/ERP tizimlari, AI integratsiyalari hamda DevOps xizmatlariga ixtisoslashgan IT agentlik.',
+    'foundingDate': '2026-04',
     'address': {
       '@type': 'PostalAddress',
       'addressCountry': 'UZ',
@@ -57,10 +62,14 @@ function buildOrganizationSchema(): JsonLdNode {
       'https://t.me/softappdev'
     ],
     'makesOffer': [
-      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Enterprise CRM & ERP Systems' } },
-      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Cross-Platform Mobile Development' } },
-      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'High-Load Backend & API Architecture' } },
-      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'UI/UX System Design' } }
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Korporativ CRM va ERP tizimlari' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Mobil ilovalar ishlab chiqish' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Desktop ilovalar ishlab chiqish' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Web platformalar va API arxitekturasi' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Telegram botlar va Mini App' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'AI integratsiyalari' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Cloud va DevOps' } },
+      { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'UI/UX dizayn tizimlari' } }
     ]
   }
 }
@@ -72,7 +81,7 @@ function buildWebSiteSchema(): JsonLdNode {
     'url': AGENCY_URL,
     'name': AGENCY_NAME,
     'publisher': { '@id': `${AGENCY_URL}/#organization` },
-    'inLanguage': 'en'
+    'inLanguage': 'uz'
   }
 }
 
@@ -88,7 +97,7 @@ function buildSoftwareApplicationSchema(project: {
     '@id': `${project.url}/#software`,
     'name': project.name,
     'applicationCategory': 'BusinessApplication',
-    'applicationSubCategory': 'E-Commerce Ecosystem',
+    'applicationSubCategory': 'E-tijorat ekotizimi',
     'operatingSystem': 'iOS, Android',
     'description': `${project.tagline}. ${project.description}`,
     'url': project.url,
@@ -127,7 +136,7 @@ export function useSeo(input: SeoInput, options: { software?: { name: string, ta
   }
 
   useHead({
-    htmlAttrs: { lang: 'en' },
+    htmlAttrs: { lang: 'uz' },
     link: [{ rel: 'canonical', href: canonical }],
     meta: [{ name: 'keywords', content: keywords.join(', ') }],
     script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(toJsonLdScript(graph)) }]

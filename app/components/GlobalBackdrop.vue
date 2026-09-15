@@ -7,7 +7,6 @@ import * as THREE from 'three'
  * the scroll position, and pauses itself when offscreen or hidden.
  */
 const canvas = ref<HTMLCanvasElement>()
-const isDark = inject<Ref<boolean>>('isDark')
 
 const palette = [0x6366f1, 0x06b6d4, 0x10b981, 0x818cf8, 0x22d3ee]
 
@@ -119,8 +118,6 @@ useThreeScene(canvas, {
     window.addEventListener('scroll', onScroll, { passive: true })
 
     return ({ elapsed, pointer, size }) => {
-      particleMaterial.opacity = isDark?.value === false ? 0.42 : 0.7
-
       group.rotation.y = elapsed * 0.012 + pointer.x * 0.18
       group.rotation.x = Math.sin(elapsed * 0.05) * 0.05 + pointer.y * 0.08
       group.position.y = scroll.progress * 1.6

@@ -1,8 +1,11 @@
 # SoftAppDev — agency website
 
-Marketing and case-study site for **SoftAppDev**, a product engineering studio in Tashkent
-building CRM/ERP systems, e-commerce and logistics platforms, cross-platform mobile apps
-and the cloud infrastructure behind them.
+Marketing and case-study site for **SoftAppDev**, a product engineering studio founded in
+Tashkent in April 2026, building mobile, desktop and web apps, Telegram bots and Mini Apps,
+CRM/ERP systems, AI integrations and the DevOps behind them.
+
+The site ships **in Uzbek only** and **in dark mode only** — there is no language switch and
+no light theme.
 
 Live domains: [`softappdev.uz`](https://softappdev.uz) · case study: `/work/connectmobile`
 
@@ -13,8 +16,8 @@ Live domains: [`softappdev.uz`](https://softappdev.uz) · case study: `/work/con
 | Landing page (hero, portfolio, services, stack, process, company, estimate form) | `app/pages/index.vue` + `app/components/*Section.vue` |
 | ConnectMobile case study page | `app/pages/work/connectmobile.vue` |
 | Legal pages | `app/pages/privacy.vue`, `app/pages/terms.vue` |
-| Bilingual UI dictionary (EN / UZ) | `app/composables/useLocale.ts` |
-| Case study content (EN / UZ) | `app/composables/useCaseStudy.ts` |
+| Uzbek UI dictionary | `app/composables/useLocale.ts` |
+| Case study content (Uzbek) | `app/composables/useCaseStudy.ts` |
 | Portfolio, tech stack and estimator data | `app/composables/useProjects.ts`, `useTechStack.ts`, `useEstimator.ts` |
 | WebGL scenes | `app/components/GlobalBackdrop.vue`, `HeroBackground.vue`, `CaseStudyScene.vue` |
 | WebGL lifecycle helper | `app/composables/useThreeScene.ts` |
@@ -69,9 +72,9 @@ The script scans `app/` for `i-lucide-*` and `i-simple-icons-*` references and r
 
 ## Content editing
 
-- **Copy and UI strings** live in `app/composables/useLocale.ts` (`en` and `uz` trees).
-- **Case study content** lives in `app/composables/useCaseStudy.ts`, with every field typed as a
-  bilingual `LocalizedText` object (`{ en, uz }`) rendered through `lt()`.
+- **Copy and UI strings** live in `app/composables/useLocale.ts` as one flat Uzbek dictionary
+  read through `t('key')`.
+- **Case study content** lives in `app/composables/useCaseStudy.ts` as plain Uzbek strings.
 - **Metrics, phases and integration notes** in the case study are business figures — review them
   before publishing so the published numbers match reality.
 
@@ -79,7 +82,8 @@ The script scans `app/` for `i-lucide-*` and `i-simple-icons-*` references and r
 
 - No semicolons, single quotes, 2-space indentation (enforced by the Nuxt ESLint stylistic preset).
 - Semantic colour utilities (`text-highlighted`, `text-muted`, `bg-accentuated`, `glass`) instead of
-  raw palette classes, so light and dark stay in sync.
+  raw palette classes; the tokens are defined once on `:root` in `app/assets/css/main.css`, which is
+  the only theme the site ships.
 - Every WebGL canvas goes through `useThreeScene`, which handles resize, offscreen pausing,
   `prefers-reduced-motion` and GPU disposal.
 

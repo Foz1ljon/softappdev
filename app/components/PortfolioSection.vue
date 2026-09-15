@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { t, lt } = useLocale()
+const { t } = useLocale()
 const { filters, selectedCategory, featuredProject } = useProjects()
 
 const sectionRef = ref<HTMLElement>()
@@ -75,7 +75,7 @@ onMounted(() => {
             :name="filter.icon"
             class="h-3.5 w-3.5"
           />
-          {{ lt({ en: filter.label, uz: filter.labelUz }) }}
+          {{ filter.label }}
         </button>
       </div>
 
@@ -96,7 +96,7 @@ onMounted(() => {
             <div class="grid gap-8 lg:grid-cols-5 lg:gap-12">
               <div class="lg:col-span-3">
                 <div class="mb-4 flex flex-wrap items-center gap-3">
-                  <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-bold text-emerald-400">Featured</span>
+                  <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-bold text-emerald-400">{{ t('portfolio.featuredBadge') }}</span>
                   <span class="text-sm text-muted">{{ featuredProject.year }}</span>
                   <span class="ml-auto hidden text-xs text-muted/60 sm:inline">{{ t('portfolio.flipHint') }}</span>
                 </div>
@@ -192,19 +192,19 @@ onMounted(() => {
             :style="{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }"
           >
             <div class="flex h-full flex-col justify-center">
-              <span class="mb-4 inline-block w-fit rounded-full bg-indigo-500/15 px-3 py-1 text-xs font-bold text-indigo-400">Architecture deep dive</span>
+              <span class="mb-4 inline-block w-fit rounded-full bg-indigo-500/15 px-3 py-1 text-xs font-bold text-indigo-400">{{ t('portfolio.deepDive') }}</span>
               <h3 class="text-2xl font-extrabold text-highlighted sm:text-3xl">
-                ConnectMobile system architecture
+                {{ t('portfolio.backTitle') }}
               </h3>
 
               <div class="mt-8 grid gap-6 sm:grid-cols-2">
                 <div class="space-y-4">
                   <h4 class="text-sm font-bold uppercase tracking-wider text-indigo-400">
-                    Client layer
+                    {{ t('portfolio.layer.client') }}
                   </h4>
                   <ul class="space-y-2 text-sm text-muted">
                     <li
-                      v-for="item in ['Vue 3 + Capacitor apps', 'Courier terminal with offline queue', 'Operations dashboard (web)', 'Shared design tokens']"
+                      v-for="item in ['Vue 3 + Capacitor ilovalari', 'Offline navbatli kuryer terminali', 'Ant Design boshqaruv paneli (web)', 'Umumiy Tailwind dizayn tokenlari']"
                       :key="item"
                       class="flex items-center gap-2"
                     >
@@ -218,11 +218,11 @@ onMounted(() => {
                 </div>
                 <div class="space-y-4">
                   <h4 class="text-sm font-bold uppercase tracking-wider text-cyan-400">
-                    Backend layer
+                    {{ t('portfolio.layer.backend') }}
                   </h4>
                   <ul class="space-y-2 text-sm text-muted">
                     <li
-                      v-for="item in ['NestJS services behind a gateway', 'PostgreSQL transactional core', 'Redis cache + BullMQ queues', 'Idempotent payment webhooks']"
+                      v-for="item in ['Gateway ortidagi NestJS servislari', 'Fastify ustidagi REST qatlami', 'MongoDB tranzaksion yadro', 'Redis kesh + BullMQ navbatlari']"
                       :key="item"
                       class="flex items-center gap-2"
                     >
@@ -236,11 +236,11 @@ onMounted(() => {
                 </div>
                 <div class="space-y-4">
                   <h4 class="text-sm font-bold uppercase tracking-wider text-emerald-400">
-                    Integrations
+                    {{ t('portfolio.layer.integrations') }}
                   </h4>
                   <ul class="space-y-2 text-sm text-muted">
                     <li
-                      v-for="item in ['Click Payment checkout + refunds', 'Uzpost parcel + tracking', 'BTS Express pickups', 'Push (FCM / APNs) + SMS OTP']"
+                      v-for="item in ['Click Payment to‘lov va qaytarish', 'Uzpost posilka va kuzatuv', 'BTS Express olib ketish', 'Push (FCM / APNs) + SMS OTP']"
                       :key="item"
                       class="flex items-center gap-2"
                     >
@@ -254,11 +254,11 @@ onMounted(() => {
                 </div>
                 <div class="space-y-4">
                   <h4 class="text-sm font-bold uppercase tracking-wider text-amber-400">
-                    Delivery
+                    {{ t('portfolio.layer.delivery') }}
                   </h4>
                   <ul class="space-y-2 text-sm text-muted">
                     <li
-                      v-for="item in ['Hetzner + Nginx + Docker', 'Cloudflare CDN / WAF', 'GitHub Actions pipelines', 'Zero-downtime releases']"
+                      v-for="item in ['Hetzner + Nginx + Docker', 'Cloudflare CDN / WAF', 'GitHub Actions quvurlari', 'Uzilishsiz relizlar']"
                       :key="item"
                       class="flex items-center gap-2"
                     >

@@ -1,76 +1,114 @@
 <script setup lang="ts">
-import type { LocalizedText } from '~/composables/useLocale'
-
-const { t, lt } = useLocale()
+const { t } = useLocale()
 
 const services: {
   icon: string
-  title: LocalizedText
-  description: LocalizedText
-  bullets: LocalizedText[]
+  title: string
+  description: string
+  bullets: string[]
   color: string
   bg: string
   border: string
 }[] = [
   {
-    icon: 'i-lucide-workflow',
-    title: { en: 'Enterprise CRM & ERP systems', uz: 'Korporativ CRM va ERP tizimlari' },
-    description: {
-      en: 'Custom workflows, role-based access control, WMS/HRMS integration and real-time dashboards modelled on how your business actually operates.',
-      uz: 'Maxsus jarayonlar, rolga asoslangan ruxsatlar, WMS/HRMS integratsiyasi va biznesingiz haqiqatda qanday ishlashiga mos real vaqt panellari.'
-    },
-    bullets: [
-      { en: 'Domain modelling before any screen', uz: 'Har qanday ekrandan oldin domen modeli' },
-      { en: 'Granular roles, permissions and audit log', uz: 'Nozik rollar, huquqlar va audit jurnali' },
-      { en: 'Migration from spreadsheets and legacy tools', uz: 'Jadval va eski tizimlardan ko‘chirish' }
-    ],
-    color: 'text-indigo-400',
-    bg: 'bg-indigo-500/10',
-    border: 'border-indigo-500/20'
-  },
-  {
     icon: 'i-lucide-smartphone',
-    title: { en: 'Cross-platform mobile development', uz: 'Ko‘p platformali mobil ishlab chiqish' },
-    description: {
-      en: 'Capacitor and native builds from a single Vue codebase — offline sync, push notifications and delivery to both app stores with one release train.',
-      uz: 'Bitta Vue kod bazasidan Capacitor va native buildlar — offline sinxronizatsiya, push bildirishnomalar va bitta reliz oqimi bilan ikkala ilova do‘koniga chiqish.'
-    },
+    title: 'Mobil ilovalar',
+    description: 'iOS va Android uchun bitta Vue + Capacitor kod bazasidan chiqadigan ilovalar — offline sinxronizatsiya, push bildirishnomalar va ikkala do‘konga bitta reliz oqimi.',
     bullets: [
-      { en: 'Offline-first data flow for field teams', uz: 'Dala jamoalari uchun offline-first ma’lumot oqimi' },
-      { en: 'Native camera, geolocation and secure storage', uz: 'Native kamera, geolokatsiya va xavfsiz saqlash' },
-      { en: 'Store review and release automation', uz: 'Do‘kon ko‘rigi va reliz avtomatizatsiyasi' }
+      'Dala jamoalari uchun offline-first ma’lumot oqimi',
+      'Native kamera, geolokatsiya va xavfsiz saqlash',
+      'Do‘kon ko‘rigi va reliz avtomatizatsiyasi'
     ],
     color: 'text-emerald-400',
     bg: 'bg-emerald-500/10',
     border: 'border-emerald-500/20'
   },
   {
-    icon: 'i-lucide-server-cog',
-    title: { en: 'High-load backends & API architecture', uz: 'Yuqori yuklamali backend va API arxitekturasi' },
-    description: {
-      en: 'NestJS and Fastify services, Redis caching, BullMQ job pipelines and event-driven integrations built to survive peak retail or logistics season.',
-      uz: 'NestJS va Fastify servislari, Redis kesh, BullMQ navbatlari va savdo yoki logistika mavsumidagi yuklamaga chidamli hodisaga asoslangan integratsiyalar.'
-    },
+    icon: 'i-lucide-monitor',
+    title: 'Desktop ilovalar',
+    description: 'Windows, macOS va Linux uchun Electron yoki Tauri asosidagi ilovalar — web interfeysingiz bilan bir xil dizayn tizimi va bir xil API shartnomalari ustida ishlaydi.',
     bullets: [
-      { en: 'Domain-split services behind one gateway', uz: 'Bitta gateway ortida domen bo‘yicha bo‘lingan servislar' },
-      { en: 'Idempotent payments and webhook reconciliation', uz: 'Idempotent to‘lovlar va webhook solishtiruvi' },
-      { en: 'Load testing and observability from day one', uz: 'Birinchi kundan yuklama testi va kuzatuv' }
+      'Offline rejim va lokal ma’lumotlar bazasi',
+      'Avtomatik yangilanish va imzolangan buildlar',
+      'Printer, skaner va USB qurilmalar bilan integratsiya'
+    ],
+    color: 'text-sky-400',
+    bg: 'bg-sky-500/10',
+    border: 'border-sky-500/20'
+  },
+  {
+    icon: 'i-lucide-globe',
+    title: 'Web platformalar va API',
+    description: 'NestJS va Fastify servislari, MongoDB ma’lumot qatlami, Redis kesh, BullMQ navbatlari va savdo yoki logistika mavsumidagi yuklamaga chidamli integratsiyalar.',
+    bullets: [
+      'Bitta gateway ortida domen bo‘yicha bo‘lingan servislar',
+      'Idempotent to‘lovlar va webhook solishtiruvi',
+      'Birinchi kundan yuklama testi va kuzatuv'
     ],
     color: 'text-cyan-400',
     bg: 'bg-cyan-500/10',
     border: 'border-cyan-500/20'
   },
   {
-    icon: 'i-lucide-palette',
-    title: { en: 'UI/UX systems & component libraries', uz: 'UI/UX tizimlari va komponent kutubxonalari' },
-    description: {
-      en: 'Design tokens, Figma-to-code pipelines and accessible component libraries so the fourth screen of a product is as fast to build as the first.',
-      uz: 'Dizayn tokenlari, Figma’dan kodga oqim va qulay komponent kutubxonalari — mahsulotning to‘rtinchi ekrani birinchisi kabi tez quriladi.'
-    },
+    icon: 'i-simple-icons-telegram',
+    title: 'Telegram botlar va Mini App',
+    description: 'Telegram ichida to‘liq ishlaydigan mahsulotlar: buyurtma qabul qilish, to‘lov, yetkazish kuzatuvi va operator paneli — alohida ilova yuklamasdan.',
     bullets: [
-      { en: 'One token layer across web and mobile', uz: 'Web va mobil uchun yagona token qatlami' },
-      { en: 'Accessible, keyboard-friendly components', uz: 'Qulay, klaviatura bilan boshqariladigan komponentlar' },
-      { en: 'Design reviews inside the sprint loop', uz: 'Sprint ichida dizayn ko‘rikdan o‘tkazish' }
+      'Mini App va bot bitta backend ustida',
+      'Click/Payme to‘lovlari va tasdiqlash oqimi',
+      'CRM va omborga real vaqtda ulanish'
+    ],
+    color: 'text-blue-400',
+    bg: 'bg-blue-500/10',
+    border: 'border-blue-500/20'
+  },
+  {
+    icon: 'i-lucide-brain-circuit',
+    title: 'AI integratsiyalari',
+    description: 'Mahsulotingizga sun’iy intellektni ulash: hujjatlar bo‘yicha savol-javob, qo‘llab-quvvatlash assistenti, matn va rasm tahlili hamda jarayonlarni avtomatlashtirish.',
+    bullets: [
+      'O‘z ma’lumotlaringiz ustida RAG qidiruv',
+      'Operator o‘rniga emas, yonida ishlaydigan assistent',
+      'Xarajat, kechikish va sifat bo‘yicha nazorat'
+    ],
+    color: 'text-fuchsia-400',
+    bg: 'bg-fuchsia-500/10',
+    border: 'border-fuchsia-500/20'
+  },
+  {
+    icon: 'i-lucide-workflow',
+    title: 'CRM va ERP tizimlari',
+    description: 'Maxsus jarayonlar, rolga asoslangan ruxsatlar, WMS/HRMS integratsiyasi va biznesingiz haqiqatda qanday ishlashiga mos real vaqt panellari.',
+    bullets: [
+      'Har qanday ekrandan oldin domen modeli',
+      'Nozik rollar, huquqlar va audit jurnali',
+      'Jadval va eski tizimlardan ko‘chirish'
+    ],
+    color: 'text-indigo-400',
+    bg: 'bg-indigo-500/10',
+    border: 'border-indigo-500/20'
+  },
+  {
+    icon: 'i-lucide-cloud-cog',
+    title: 'Cloud va DevOps',
+    description: 'Serverni sozlashdan tortib uzilishsiz relizgacha: CI/CD quvurlari, konteynerlar, monitoring va ogohlantirish tizimi — mahsulotingiz ishlashda davom etadi.',
+    bullets: [
+      'Docker, Nginx, GitHub Actions va kod sifatidagi infratuzilma',
+      'Zaxira nusxa, tiklash rejasi va uzilishsiz migratsiya',
+      'Metrikalar, loglar va navbatchilik ogohlantirishlari'
+    ],
+    color: 'text-teal-400',
+    bg: 'bg-teal-500/10',
+    border: 'border-teal-500/20'
+  },
+  {
+    icon: 'i-lucide-palette',
+    title: 'UI/UX tizimlari',
+    description: 'Dizayn tokenlari, Tailwind va Ant Design ustidagi komponent qatlami hamda Figma’dan kodga oqim — mahsulotning to‘rtinchi ekrani birinchisi kabi tez quriladi.',
+    bullets: [
+      'Web, mobil va desktop uchun yagona token qatlami',
+      'Qulay, klaviatura bilan boshqariladigan komponentlar',
+      'Sprint ichida dizayn ko‘rikdan o‘tkazish'
     ],
     color: 'text-amber-400',
     bg: 'bg-amber-500/10',
@@ -109,7 +147,7 @@ const tilts = services.map(() => useCardTilt(8))
       <div class="grid gap-6 sm:grid-cols-2">
         <div
           v-for="(service, i) in services"
-          :key="service.title.en"
+          :key="service.title"
           :ref="(el: any) => { tilts[i]!.cardRef.value = el as HTMLElement }"
           v-motion
           :initial="{ opacity: 0, y: 40 }"
@@ -133,23 +171,23 @@ const tilts = services.map(() => useCardTilt(8))
               />
             </div>
             <h3 class="text-lg font-bold text-highlighted">
-              {{ lt(service.title) }}
+              {{ service.title }}
             </h3>
             <p class="mt-3 text-sm leading-relaxed text-muted">
-              {{ lt(service.description) }}
+              {{ service.description }}
             </p>
 
             <ul class="mt-5 space-y-2">
               <li
                 v-for="bullet in service.bullets"
-                :key="bullet.en"
+                :key="bullet"
                 class="flex gap-2.5 text-sm text-muted"
               >
                 <AppIcon
                   name="i-lucide-check"
                   class="mt-0.5 h-4 w-4 shrink-0 text-emerald-400"
                 />
-                <span>{{ lt(bullet) }}</span>
+                <span>{{ bullet }}</span>
               </li>
             </ul>
           </div>

@@ -1,6 +1,6 @@
-export type ProjectType = 'crm-erp' | 'mobile' | 'web-platform' | 'cloud'
+export type ProjectType = 'crm-erp' | 'mobile' | 'desktop' | 'web-platform' | 'telegram' | 'ai' | 'cloud'
 
-export type BudgetRange = 'under-10k' | '10k-30k' | '30k-80k' | '80k-plus'
+export type BudgetRange = '1k-5k' | '5k-10k' | '10k-20k' | '20k-30k'
 
 export type TimelineOption = 'asap' | '1-3-months' | '3-6-months' | 'flexible'
 
@@ -19,7 +19,6 @@ export interface EstimatorState {
 export interface OptionEntry<T extends string = string> {
   value: T
   label: string
-  labelUz: string
   description: string
   icon: string
 }
@@ -32,46 +31,60 @@ export interface ValidationError {
 export const estimatorProjectTypes: OptionEntry<ProjectType>[] = [
   {
     value: 'crm-erp',
-    label: 'CRM / ERP System',
-    labelUz: 'CRM / ERP tizimi',
-    description: 'Custom workflows, RBAC, WMS/HRMS integrations',
+    label: 'CRM / ERP tizimi',
+    description: 'Maxsus jarayonlar, rolga asoslangan ruxsatlar, WMS/HRMS integratsiyasi',
     icon: 'i-lucide-workflow'
   },
   {
     value: 'mobile',
-    label: 'Mobile Application',
-    labelUz: 'Mobil ilova',
-    description: 'Capacitor or native, offline sync, push notifications',
+    label: 'Mobil ilova',
+    description: 'Capacitor yoki native, offline sinxronizatsiya, push bildirishnomalar',
     icon: 'i-lucide-smartphone'
   },
   {
+    value: 'desktop',
+    label: 'Desktop ilova',
+    description: 'Electron yoki Tauri, offline rejim, avtomatik yangilanish',
+    icon: 'i-lucide-monitor'
+  },
+  {
     value: 'web-platform',
-    label: 'High-Load Web Platform',
-    labelUz: 'Yuqori yuklamali platforma',
-    description: 'Microservices, queues, real-time data at scale',
+    label: 'Yuqori yuklamali platforma',
+    description: 'Mikroservislar, navbatlar, katta miqyosda real vaqt ma’lumoti',
     icon: 'i-lucide-server-cog'
   },
   {
+    value: 'telegram',
+    label: 'Telegram bot yoki Mini App',
+    description: 'Telegram ichida buyurtma, to‘lov va operator paneli',
+    icon: 'i-simple-icons-telegram'
+  },
+  {
+    value: 'ai',
+    label: 'AI integratsiyasi',
+    description: 'Assistent, hujjatlar bo‘yicha qidiruv, jarayonlarni avtomatlashtirish',
+    icon: 'i-lucide-brain-circuit'
+  },
+  {
     value: 'cloud',
-    label: 'Cloud & DevOps',
-    labelUz: 'Cloud va DevOps',
-    description: 'CI/CD, infrastructure-as-code, observability',
+    label: 'Cloud va DevOps',
+    description: 'CI/CD, kod sifatidagi infratuzilma, kuzatuv',
     icon: 'i-lucide-cloud-cog'
   }
 ]
 
 export const estimatorBudgets: OptionEntry<BudgetRange>[] = [
-  { value: 'under-10k', label: 'Under $10k', labelUz: '$10k gacha', description: 'Focused MVP or audit', icon: 'i-lucide-circle-dollar-sign' },
-  { value: '10k-30k', label: '$10k — $30k', labelUz: '$10k — $30k', description: 'Full product release', icon: 'i-lucide-circle-dollar-sign' },
-  { value: '30k-80k', label: '$30k — $80k', labelUz: '$30k — $80k', description: 'Multi-team enterprise build', icon: 'i-lucide-circle-dollar-sign' },
-  { value: '80k-plus', label: '$80k+', labelUz: '$80k+', description: 'Long-term platform program', icon: 'i-lucide-circle-dollar-sign' }
+  { value: '1k-5k', label: '$1k — $5k', description: 'Telegram bot, kichik ilova yoki audit', icon: 'i-lucide-circle-dollar-sign' },
+  { value: '5k-10k', label: '$5k — $10k', description: 'Aniq maqsadli MVP', icon: 'i-lucide-circle-dollar-sign' },
+  { value: '10k-20k', label: '$10k — $20k', description: 'To‘liq mahsulot relizi', icon: 'i-lucide-circle-dollar-sign' },
+  { value: '20k-30k', label: '$20k — $30k', description: 'Bir necha jamoali korporativ loyiha', icon: 'i-lucide-circle-dollar-sign' }
 ]
 
 export const estimatorTimelines: OptionEntry<TimelineOption>[] = [
-  { value: 'asap', label: 'ASAP', labelUz: 'Tez orada', description: 'Kick off within 2 weeks', icon: 'i-lucide-zap' },
-  { value: '1-3-months', label: '1 — 3 months', labelUz: '1 — 3 oy', description: 'Standard planning window', icon: 'i-lucide-calendar' },
-  { value: '3-6-months', label: '3 — 6 months', labelUz: '3 — 6 oy', description: 'Discovery first, then build', icon: 'i-lucide-calendar-range' },
-  { value: 'flexible', label: 'Flexible', labelUz: 'Moslashuvchan', description: 'Scope and schedule open', icon: 'i-lucide-calendar-sync' }
+  { value: 'asap', label: 'Tez orada', description: '2 hafta ichida boshlash', icon: 'i-lucide-zap' },
+  { value: '1-3-months', label: '1 — 3 oy', description: 'Standart rejalashtirish oynasi', icon: 'i-lucide-calendar' },
+  { value: '3-6-months', label: '3 — 6 oy', description: 'Avval tahlil, keyin ishlab chiqish', icon: 'i-lucide-calendar-range' },
+  { value: 'flexible', label: 'Moslashuvchan', description: 'Hajm va jadval ochiq', icon: 'i-lucide-calendar-sync' }
 ]
 
 export const estimatorStepCount = 4

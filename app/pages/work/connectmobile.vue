@@ -5,7 +5,7 @@ import { AGENCY_NAME } from '~/composables/useSeo'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { t, lt } = useLocale()
+const { t } = useLocale()
 const study = useCaseStudy()
 
 const activeProductId = ref(study.products[0]!.id)
@@ -33,17 +33,17 @@ function scrollToContact() {
 
 useSeo(
   {
-    title: `${study.name} — E-Commerce & Delivery Ecosystem Case Study | ${AGENCY_NAME}`,
-    description: 'Inside ConnectMobile: a customer mobile app, an offline-first courier terminal, an operations dashboard and twelve NestJS backend services covering orders, Click payments, carrier routing and settlement.',
+    title: `${study.name} — E-tijorat va yetkazish ekotizimi keysi | ${AGENCY_NAME}`,
+    description: 'ConnectMobile ichkarisi: mijoz mobil ilovasi, offline-first kuryer terminali, Ant Design boshqaruv paneli va buyurtma, Click to‘lovlari, kuryer marshrutlash hamda hisob-kitobni qamrab oluvchi o‘n ikkita NestJS backend servisi.',
     path: study.path,
     type: 'article',
-    keywords: ['ConnectMobile case study', 'delivery app development', 'courier app', 'NestJS microservices', 'Click Payment integration', 'Uzpost API', 'BTS Express', 'offline-first mobile app']
+    keywords: ['ConnectMobile keys', 'yetkazish ilovasi ishlab chiqish', 'kuryer ilovasi', 'NestJS mikroservislar', 'Fastify', 'MongoDB', 'Capacitor', 'Ant Design', 'Click Payment integratsiyasi', 'Uzpost API', 'BTS Express']
   },
   {
     software: {
       name: study.name,
-      tagline: lt(study.tagline),
-      description: lt(study.summary),
+      tagline: study.tagline,
+      description: study.summary,
       url: study.liveUrl,
       stack: study.stack.slice(0, 8)
     }
@@ -102,7 +102,7 @@ onMounted(() => {
               <span class="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-300">
                 {{ t('case.eyebrow') }}
               </span>
-              <span class="text-sm text-muted">{{ lt(study.period) }}</span>
+              <span class="text-sm text-muted">{{ study.period }}</span>
             </div>
 
             <h1
@@ -120,7 +120,7 @@ onMounted(() => {
               :enter="{ opacity: 1, y: 0, transition: { duration: 650, delay: 160 } }"
               class="mt-4 text-xl font-semibold text-gradient sm:text-2xl"
             >
-              {{ lt(study.tagline) }}
+              {{ study.tagline }}
             </p>
 
             <p
@@ -129,7 +129,7 @@ onMounted(() => {
               :enter="{ opacity: 1, y: 0, transition: { duration: 650, delay: 240 } }"
               class="mt-6 max-w-2xl text-lg leading-relaxed text-muted"
             >
-              {{ lt(study.summary) }}
+              {{ study.summary }}
             </p>
 
             <div
@@ -170,7 +170,7 @@ onMounted(() => {
           >
             <div
               v-for="(metric, i) in study.metrics"
-              :key="metric.label.en"
+              :key="metric.label"
               v-motion
               :initial="{ opacity: 0, y: 14 }"
               :enter="{ opacity: 1, y: 0, transition: { duration: 500, delay: 260 + i * 70 } }"
@@ -180,7 +180,7 @@ onMounted(() => {
                 {{ metric.value }}
               </div>
               <div class="mt-1 text-xs text-muted">
-                {{ lt(metric.label) }}
+                {{ metric.label }}
               </div>
             </div>
           </div>
@@ -277,10 +277,10 @@ onMounted(() => {
                   <span class="rounded-full bg-accentuated px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted">{{ product.platform.split(' · ')[0] }}</span>
                 </div>
                 <p class="mt-1 text-xs font-medium text-muted">
-                  {{ lt(product.kind) }}
+                  {{ product.kind }}
                 </p>
                 <p class="mt-2 text-sm leading-relaxed text-muted">
-                  {{ lt(product.tagline) }}
+                  {{ product.tagline }}
                 </p>
               </div>
             </button>
@@ -339,13 +339,13 @@ onMounted(() => {
                   class="text-xs font-semibold uppercase tracking-wider"
                   :class="accents[activeProduct.accent].text"
                 >
-                  {{ lt(activeProduct.kind) }}
+                  {{ activeProduct.kind }}
                 </span>
                 <h3 class="mt-2 text-2xl font-extrabold text-highlighted sm:text-3xl">
                   {{ activeProduct.name }}
                 </h3>
                 <p class="mt-4 leading-relaxed text-muted">
-                  {{ lt(activeProduct.summary) }}
+                  {{ activeProduct.summary }}
                 </p>
               </div>
 
@@ -384,7 +384,7 @@ onMounted(() => {
             <div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
               <article
                 v-for="(module, i) in activeProduct.modules"
-                :key="module.title.en"
+                :key="module.title"
                 v-motion
                 :initial="{ opacity: 0, y: 22 }"
                 :enter="{ opacity: 1, y: 0, transition: { duration: 450, delay: 120 + i * 80 } }"
@@ -396,11 +396,11 @@ onMounted(() => {
                     :class="accents[activeProduct.accent].dot"
                   />
                   <h4 class="font-semibold text-highlighted">
-                    {{ lt(module.title) }}
+                    {{ module.title }}
                   </h4>
                 </div>
                 <p class="mt-2 text-sm leading-relaxed text-muted">
-                  {{ lt(module.body) }}
+                  {{ module.body }}
                 </p>
               </article>
             </div>
@@ -411,7 +411,7 @@ onMounted(() => {
                 class="mt-0.5 h-5 w-5 shrink-0 text-emerald-400"
               />
               <p class="text-sm leading-relaxed text-highlighted">
-                {{ lt(activeProduct.outcome) }}
+                {{ activeProduct.outcome }}
               </p>
             </div>
           </div>
@@ -465,12 +465,12 @@ onMounted(() => {
                   {{ service.name }}
                 </h3>
                 <p class="text-xs text-muted">
-                  {{ lt(service.role) }}
+                  {{ service.role }}
                 </p>
               </div>
             </div>
             <p class="mt-3 text-sm leading-relaxed text-muted">
-              {{ lt(service.detail) }}
+              {{ service.detail }}
             </p>
             <div class="mt-4 flex flex-wrap gap-1.5">
               <span
@@ -534,21 +534,21 @@ onMounted(() => {
                   {{ integration.name }}
                 </h3>
                 <p class="text-xs text-muted">
-                  {{ lt(integration.purpose) }}
+                  {{ integration.purpose }}
                 </p>
               </div>
             </div>
             <ul class="mt-4 space-y-2.5">
               <li
                 v-for="note in integration.notes"
-                :key="note.en"
+                :key="note"
                 class="flex gap-2.5 text-sm leading-relaxed text-muted"
               >
                 <AppIcon
                   name="i-lucide-check"
                   class="mt-0.5 h-4 w-4 shrink-0 text-emerald-400"
                 />
-                <span>{{ lt(note) }}</span>
+                <span>{{ note }}</span>
               </li>
             </ul>
           </article>
@@ -592,7 +592,7 @@ onMounted(() => {
           <ol class="space-y-8">
             <li
               v-for="(step, i) in study.lifecycle"
-              :key="step.title.en"
+              :key="step.title"
               v-motion
               :initial="{ opacity: 0, x: 26 }"
               :visible-once="{ opacity: 1, x: 0, transition: { duration: 500, delay: (i % 4) * 80 } }"
@@ -608,11 +608,11 @@ onMounted(() => {
                     class="h-4 w-4 text-indigo-400"
                   />
                   <h3 class="font-semibold text-highlighted">
-                    {{ lt(step.title) }}
+                    {{ step.title }}
                   </h3>
                 </div>
                 <p class="mt-2 text-sm leading-relaxed text-muted">
-                  {{ lt(step.body) }}
+                  {{ step.body }}
                 </p>
               </div>
             </li>
@@ -637,7 +637,7 @@ onMounted(() => {
             <ul class="mt-8 space-y-4">
               <li
                 v-for="(principle, i) in study.principles"
-                :key="principle.en"
+                :key="principle"
                 v-motion
                 :initial="{ opacity: 0, y: 18 }"
                 :visible-once="{ opacity: 1, y: 0, transition: { duration: 460, delay: i * 70 } }"
@@ -647,7 +647,7 @@ onMounted(() => {
                   name="i-lucide-check-circle-2"
                   class="mt-0.5 h-4 w-4 shrink-0 text-emerald-400"
                 />
-                <span>{{ lt(principle) }}</span>
+                <span>{{ principle }}</span>
               </li>
             </ul>
           </div>
@@ -664,7 +664,7 @@ onMounted(() => {
             <ol class="mt-8 space-y-4">
               <li
                 v-for="(phase, i) in study.phases"
-                :key="phase.title.en"
+                :key="phase.title"
                 v-motion
                 :initial="{ opacity: 0, y: 18 }"
                 :visible-once="{ opacity: 1, y: 0, transition: { duration: 460, delay: i * 70 } }"
@@ -672,12 +672,12 @@ onMounted(() => {
               >
                 <div class="flex items-baseline justify-between gap-4">
                   <h3 class="font-semibold text-highlighted">
-                    {{ lt(phase.title) }}
+                    {{ phase.title }}
                   </h3>
-                  <span class="shrink-0 text-xs font-medium text-indigo-300">{{ lt(phase.period) }}</span>
+                  <span class="shrink-0 text-xs font-medium text-indigo-300">{{ phase.period }}</span>
                 </div>
                 <p class="mt-2 text-sm leading-relaxed text-muted">
-                  {{ lt(phase.body) }}
+                  {{ phase.body }}
                 </p>
               </li>
             </ol>

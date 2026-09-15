@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const { t, toggleLocale, currentLocale } = useLocale()
-const isDark = inject<Ref<boolean>>('isDark')!
-const toggleDark = inject<() => void>('toggleDark')!
+const { t } = useLocale()
 
 const navLinks = computed(() => [
   { id: 'services', label: t('nav.services'), href: '#services' },
@@ -98,31 +96,6 @@ onUnmounted(() => {
       <div class="flex items-center gap-2">
         <button
           v-motion
-          :hovered="{ scale: 1.06 }"
-          :tapped="{ scale: 0.94 }"
-          class="flex h-10 items-center rounded-full bg-accentuated px-3 text-xs font-semibold text-muted transition-colors hover:text-highlighted lg:h-8"
-          :aria-label="`Switch language, current ${currentLocale.label}`"
-          @click="toggleLocale"
-        >
-          {{ currentLocale.shortLabel }}
-        </button>
-
-        <button
-          v-motion
-          :hovered="{ scale: 1.1, rotate: 12 }"
-          :tapped="{ scale: 0.9 }"
-          class="flex h-10 w-10 items-center justify-center rounded-full bg-accentuated transition-colors hover:bg-indigo-500/15 lg:h-8 lg:w-8"
-          :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          @click="toggleDark"
-        >
-          <AppIcon
-            :name="isDark ? 'i-lucide-sun' : 'i-lucide-moon'"
-            class="h-4 w-4 text-muted"
-          />
-        </button>
-
-        <button
-          v-motion
           :hovered="{ scale: 1.04 }"
           :tapped="{ scale: 0.96 }"
           class="shimmer hidden rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-colors hover:bg-indigo-500 sm:inline-flex"
@@ -137,7 +110,7 @@ onUnmounted(() => {
 
         <button
           class="flex h-10 w-10 items-center justify-center rounded-full text-muted transition-colors hover:text-highlighted lg:hidden"
-          :aria-label="mobileOpen ? 'Close menu' : 'Open menu'"
+          :aria-label="mobileOpen ? 'Menyuni yopish' : 'Menyuni ochish'"
           @click="mobileOpen = !mobileOpen"
         >
           <AppIcon

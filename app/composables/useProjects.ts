@@ -32,45 +32,46 @@ export interface Project {
 export interface ProjectFilter {
   value: ProjectCategory
   label: string
-  labelUz: string
   icon: string
 }
 
 const projectFilters: ProjectFilter[] = [
-  { value: 'all', label: 'All', labelUz: 'Barchasi', icon: 'i-lucide-layout-grid' },
-  { value: 'ecommerce', label: 'E-Commerce', labelUz: 'E-tijorat', icon: 'i-lucide-shopping-cart' },
-  { value: 'crm-erp', label: 'CRM/ERP', labelUz: 'CRM/ERP', icon: 'i-lucide-workflow' },
-  { value: 'mobile', label: 'Mobile Apps', labelUz: 'Mobil ilovalar', icon: 'i-lucide-smartphone' },
-  { value: 'government', label: 'Government', labelUz: 'Davlat', icon: 'i-lucide-landmark' }
+  { value: 'all', label: 'Barchasi', icon: 'i-lucide-layout-grid' },
+  { value: 'ecommerce', label: 'E-tijorat', icon: 'i-lucide-shopping-cart' },
+  { value: 'crm-erp', label: 'CRM/ERP', icon: 'i-lucide-workflow' },
+  { value: 'mobile', label: 'Mobil ilovalar', icon: 'i-lucide-smartphone' },
+  { value: 'government', label: 'Davlat', icon: 'i-lucide-landmark' }
 ]
 
 const projects: Project[] = [
   {
     id: 'connectmobile',
     name: 'ConnectMobile',
-    tagline: 'All-in-One E-Commerce Ecosystem',
-    description: 'Cross-platform mobile application, courier terminal, admin dashboard and microservices backend powering a full retail logistics loop — from storefront order to last-mile delivery.',
+    tagline: 'Yagona e-tijorat ekotizimi',
+    description: 'Ko‘p platformali mobil ilova, kuryer terminali, admin paneli va mikroservis backend — vitrinadagi buyurtmadan oxirgi milyagacha bo‘lgan to‘liq savdo-logistika zanjirini boshqaradi.',
     domain: 'connectmobile.uz',
     url: 'https://connectmobile.uz',
     categories: ['ecommerce', 'mobile', 'crm-erp'],
-    stack: ['Vue 3', 'Capacitor', 'NestJS', 'Click Payment', 'Uzpost API', 'BTS Express', 'PostgreSQL', 'Redis', 'BullMQ', 'Tailwind'],
+    stack: ['Vue 3', 'Capacitor', 'Tailwind', 'Ant Design', 'NestJS', 'Fastify', 'MongoDB', 'Redis', 'BullMQ', 'Click Payment', 'Uzpost API', 'BTS Express'],
     metrics: [
-      { value: '2', label: 'App Stores Live' },
-      { value: '10k+', label: 'Downloads' },
-      { value: '3', label: 'Carrier Integrations' }
+      { value: '2', label: 'Ilova do‘koni' },
+      { value: '10k+', label: 'Yuklab olishlar' },
+      { value: '3', label: 'Kuryer integratsiyasi' }
     ],
     links: [
-      { label: 'View Live Project', url: 'https://connectmobile.uz', icon: 'i-lucide-external-link' },
-      { label: 'Read the full case study', url: '/work/connectmobile', icon: 'i-lucide-book-open', internal: true }
+      { label: 'Jonli loyihani ko‘rish', url: 'https://connectmobile.uz', icon: 'i-lucide-external-link' },
+      { label: 'To‘liq keysni o‘qish', url: '/work/connectmobile', icon: 'i-lucide-book-open', internal: true }
     ],
     featured: true,
-    year: 'June 2024 — Present',
+    year: '2026-yil maydan — hozirgacha',
     architectureNotes: [
-      'Capacitor shell around Vue 3 delivers one codebase for the Google Play Store and the App Store with native plugin access.',
-      'NestJS microservices isolate catalog, checkout and delivery domains behind a Redis-cached gateway.',
-      'Click payment gateway handles card transactions with idempotent webhook reconciliation.',
-      'Uzpost and BTS Express integrations route each parcel to the optimal carrier with live tracking events.',
-      'Courier terminal and admin dashboard share the same REST contracts, keeping fleet and inventory data in sync.'
+      'Vue 3 ustidagi Capacitor qobig‘i bitta kod bazasidan Google Play va App Store’ga chiqadi hamda native plaginlarga to‘liq kirish beradi.',
+      'NestJS mikroservislari katalog, to‘lov va yetkazish domenlarini Redis keshli gateway ortida ajratadi.',
+      'Fastify adapteri REST va webhook yo‘llarini past kechikish bilan xizmat qiladi.',
+      'MongoDB hujjatli modeli katalog, buyurtma va telemetriya ma’lumotlarini sxema evolyutsiyasiga xalal bermay saqlaydi.',
+      'Click to‘lov shlyuzi karta tranzaksiyalarini idempotent webhook solishtiruvi bilan boshqaradi.',
+      'Uzpost va BTS Express integratsiyalari har bir posilkani optimal kuryerga yo‘naltiradi va jonli kuzatuv hodisalarini beradi.',
+      'Kuryer terminali va Ant Design asosidagi admin panel bir xil REST shartnomalaridan foydalanadi — flot va ombor ma’lumotlari sinxron qoladi.'
     ]
   }
 ]

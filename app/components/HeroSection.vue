@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import type { LocalizedText } from '~/composables/useLocale'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { t, lt } = useLocale()
+const { t } = useLocale()
 
 const headlineRef = ref<HTMLElement>()
 const subtitleRef = ref<HTMLElement>()
@@ -21,7 +20,7 @@ const card3 = useCardTilt(15)
 interface HeroCard {
   ref: ReturnType<typeof useCardTilt>
   title: string
-  subtitle: LocalizedText
+  subtitle: string
   icon: string
   kind: 'api' | 'app' | 'dashboard'
   accent: 'indigo' | 'emerald' | 'cyan'
@@ -40,7 +39,7 @@ const cards: HeroCard[] = [
   {
     ref: card1,
     title: 'Backend API',
-    subtitle: { en: 'NestJS · 12 services', uz: 'NestJS · 12 servis' },
+    subtitle: 'NestJS · 12 servis',
     icon: 'i-lucide-server-cog',
     kind: 'api',
     accent: 'indigo',
@@ -58,8 +57,8 @@ const cards: HeroCard[] = [
   },
   {
     ref: card2,
-    title: 'Mobile App',
-    subtitle: { en: 'Capacitor · iOS + Android', uz: 'Capacitor · iOS + Android' },
+    title: 'Mobil ilova',
+    subtitle: 'Capacitor · iOS + Android',
     icon: 'i-lucide-smartphone',
     kind: 'app',
     accent: 'emerald',
@@ -68,13 +67,13 @@ const cards: HeroCard[] = [
     chip: 'bg-emerald-500/15 accent-emerald',
     float: 'animate-float-delayed',
     pos: 'right-0 -top-4 w-[15.5rem]',
-    status: 'sync: 3',
+    status: 'sinx: 3',
     bars: [38, 62, 48, 78, 56, 92, 70]
   },
   {
     ref: card3,
-    title: 'Dashboard',
-    subtitle: { en: 'Orders · fleet · finance', uz: 'Buyurtma · flot · moliya' },
+    title: 'Boshqaruv paneli',
+    subtitle: 'Buyurtma · flot · moliya',
     icon: 'i-lucide-bar-chart-3',
     kind: 'dashboard',
     accent: 'cyan',
@@ -84,20 +83,22 @@ const cards: HeroCard[] = [
     float: 'animate-float-slow',
     // Centred without a translate utility: the tilt binding owns `transform`.
     pos: 'left-[calc(50%-8.5rem)] top-64 w-[17rem] lg:top-[min(16rem,29vh)]',
-    status: 'live',
+    status: 'jonli',
     bars: [30, 52, 44, 68, 58, 84, 76]
   }
 ]
 
-const capabilities: { label: LocalizedText, icon: string }[] = [
-  { label: { en: 'CRM & ERP', uz: 'CRM va ERP' }, icon: 'i-lucide-workflow' },
-  { label: { en: 'E-commerce', uz: 'E-tijorat' }, icon: 'i-lucide-shopping-cart' },
-  { label: { en: 'Logistics & delivery', uz: 'Logistika va yetkazish' }, icon: 'i-lucide-truck' },
-  { label: { en: 'Mobile apps', uz: 'Mobil ilovalar' }, icon: 'i-lucide-smartphone' },
-  { label: { en: 'Payments', uz: 'To‘lovlar' }, icon: 'i-lucide-credit-card' },
-  { label: { en: 'Cloud & DevOps', uz: 'Cloud va DevOps' }, icon: 'i-lucide-cloud-cog' },
-  { label: { en: 'Data platforms', uz: 'Ma’lumot platformalari' }, icon: 'i-lucide-database' },
-  { label: { en: 'Design systems', uz: 'Dizayn tizimlari' }, icon: 'i-lucide-palette' }
+const capabilities: { label: string, icon: string }[] = [
+  { label: 'Mobil ilovalar', icon: 'i-lucide-smartphone' },
+  { label: 'Desktop ilovalar', icon: 'i-lucide-monitor' },
+  { label: 'Web platformalar', icon: 'i-lucide-globe' },
+  { label: 'Telegram ilovalar', icon: 'i-simple-icons-telegram' },
+  { label: 'AI integratsiyalar', icon: 'i-lucide-brain-circuit' },
+  { label: 'CRM va ERP', icon: 'i-lucide-workflow' },
+  { label: 'Cloud va DevOps', icon: 'i-lucide-cloud-cog' },
+  { label: 'E-tijorat', icon: 'i-lucide-shopping-cart' },
+  { label: 'To‘lovlar', icon: 'i-lucide-credit-card' },
+  { label: 'Dizayn tizimlari', icon: 'i-lucide-palette' }
 ]
 
 const marqueeItems = computed(() => [...capabilities, ...capabilities])
@@ -221,10 +222,10 @@ onMounted(() => {
             </span>
             <span>
               <span class="block text-sm font-semibold text-highlighted">
-                {{ lt({ en: 'New case study:', uz: 'Yangi keys:' }) }} ConnectMobile
+                Yangi keys: ConnectMobile
               </span>
               <span class="block text-xs text-muted">
-                {{ lt({ en: '4 products, 12 backend services, offline courier app', uz: '4 mahsulot, 12 backend servis, offline kuryer ilovasi' }) }}
+                4 mahsulot, 12 backend servis, offline kuryer ilovasi
               </span>
             </span>
             <AppIcon
@@ -282,7 +283,7 @@ onMounted(() => {
                       {{ card.title }}
                     </div>
                     <div class="truncate text-[10px] text-muted">
-                      {{ lt(card.subtitle) }}
+                      {{ card.subtitle }}
                     </div>
                   </div>
                   <span
@@ -327,9 +328,9 @@ onMounted(() => {
                   class="depth-1 hero-card-ui relative mt-3 rounded-xl p-2.5"
                 >
                   <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-semibold text-highlighted">Order #1842</span>
+                    <span class="text-[10px] font-semibold text-highlighted">Buyurtma #1842</span>
                     <span class="rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[9px] font-semibold accent-emerald">
-                      {{ lt({ en: 'in transit', uz: 'yo‘lda' }) }}
+                      yo‘lda
                     </span>
                   </div>
                   <div class="mt-2 flex h-12 items-end gap-1">
@@ -341,12 +342,12 @@ onMounted(() => {
                     />
                   </div>
                   <div class="mt-2 flex items-center justify-between text-[9px] text-muted">
-                    <span>{{ lt({ en: 'Mon', uz: 'Du' }) }}</span>
+                    <span>Du</span>
                     <span class="flex items-center gap-1">
                       <span class="dot-emerald h-1.5 w-1.5 rounded-full" />
-                      {{ lt({ en: 'queued: 3', uz: 'navbatda: 3' }) }}
+                      navbatda: 3
                     </span>
-                    <span>{{ lt({ en: 'Sun', uz: 'Ya' }) }}</span>
+                    <span>Ya</span>
                   </div>
                 </div>
 
@@ -357,7 +358,7 @@ onMounted(() => {
                 >
                   <div class="hero-card-ui rounded-xl p-2.5">
                     <div class="flex items-baseline justify-between">
-                      <span class="text-[10px] text-muted">GMV · 30d</span>
+                      <span class="text-[10px] text-muted">GMV · 30 kun</span>
                       <span class="text-[10px] font-semibold accent-cyan">+18.4%</span>
                     </div>
                     <div class="mt-0.5 text-lg font-extrabold text-highlighted">
@@ -374,7 +375,7 @@ onMounted(() => {
                   </div>
                   <div class="hero-card-ui flex items-center gap-2 rounded-lg px-2.5 py-1.5">
                     <span class="dot-cyan h-1.5 w-1.5 rounded-full" />
-                    <span class="text-[10px] text-highlighted">{{ lt({ en: '18 couriers on shift', uz: '18 kuryer smenada' }) }}</span>
+                    <span class="text-[10px] text-highlighted">18 kuryer smenada</span>
                     <span class="ml-auto text-[9px] text-muted">98.2%</span>
                   </div>
                 </div>
@@ -393,14 +394,14 @@ onMounted(() => {
         <div class="animate-marquee flex w-max items-center gap-8">
           <span
             v-for="(item, i) in marqueeItems"
-            :key="`${item.label.en}-${i}`"
+            :key="`${item.label}-${i}`"
             class="inline-flex items-center gap-2 whitespace-nowrap text-sm font-medium text-muted"
           >
             <AppIcon
               :name="item.icon"
               class="h-4 w-4 accent-indigo opacity-80"
             />
-            {{ lt(item.label) }}
+            {{ item.label }}
           </span>
         </div>
       </div>
